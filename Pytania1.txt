@@ -1,0 +1,101 @@
+﻿Pytanie 1. Wyjaśnić pojccia: "wynikanie" i "wnioskowanie" formuł (zdań).
+
+Wynikanie: 
+	wynikiem (efektem) "Wynikania" jest zdanie - zdanie (zawsze prawdziwe)
+    zdanie wynikajace otrzymujemy przez zastosowanie reguł "rachunku zdań" dla innych zdań, (co do któych jestśmy pewni ich prawdziwości).
+	zdanie wynikające nie może być sprzeczne z jakimkolwiek zdaniem w KB (Bazie Wiedzy)
+	np. ze zdań { A(wygrałaLegia) i B(WygrałaWisła) } wynika {A lub B}
+	lub: jeśli A=B i B=C to z tego wynika A=C 
+	Jeśli w bazie wiedzy nie ma wystarczających informacji - wówczas pewnye informacje nie wynikają z bazy nawet wtedy gdy nie są sprzeczne ze zdaniami w KB. i tak z KB={ A_wygrałaLegia, B_wygrałaWisła } nie wynika C_CzyPadaDeszcz nie wynika też -C_CzyPadaDeszcz.
+	
+	Wynikanie jest automatyczne i nie jest zależne od środowiska.
+
+
+Wnioskowanie bardziej skomplikowanym procesem - nie jest automatyczne jak wynikanie. 
+	Wynikiem "Wnioskowania" jest wniosek - który może lecz nie musi być zupełny. W sytuacji niepełnej wiedzy i stosowania "Logiki Rozmytej"
+	możemy wyciągać wniosek typu "Raczej TAK" lub "Raczej NIE".
+	
+	Wnioskowanie do niedawna było umiejętnością, którą posiadali tylko ludzie. 
+	
+	Wnioskowanie jest procesem generowania nowych zdań na podstawie prawdziwych zdań (w KB)
+	Procedura wnioskowania może być poprawna.
+	Procedura wnioskowania może być zupełna.
+	
+	Pokazanie (sprawdzenie) relacji wynikania zachodzącej pomiędzy formułami nazywamy wnioskowaniem.
+	
+	
+	
+
+Pytanie 2. Na czym polega i do czego sluzy regula wnioskowania? Przedstawic typowe reguly wnioskowania.
+
+Reguła wnioskowania:
+Dla rachunku zdań istnieją zupełne i poprawne procedury wnioskowania (dowodzenia zdań).
+Stosują one reguły wnioskowania o ogólnej postaci: 
+
+	poprzednik
+	------------
+	następnik
+	
+Jeśli w bazie wiedzy spełniony jest warunek dany poprzednikiem reguły to wnioskowana jest poprawność następnika	
+	a1, a2, a3
+	-----------
+	b1
+	
+	Jeśli a1 i a2 i a3 to wnioskowana jest poprawność (prawdziwość) b1
+	
+	typowe reguły:
+	odrywania (modus ponens)  a, a=>b
+	                          -------
+							  b
+							  
+	eliminacji koniunkcji							 
+							  a1 i a2 i .. an
+							  ---------------
+							  ai
+							  
+	wprowadzania koniunkcji:							   
+							  a1, a2, a3, .. an
+							  -----------------
+							  a1 i a2 i a2
+							  
+    reguła rezolucji:
+							  a lub b, -b lub c
+							  -----------------
+							  a lub c
+							  
+    poprawność reguł można sprawdzić (wyprowadzić) na podstawie tabeli prawdy.
+    następnik musi być prawdziwy wszędzie tam gdzie spełnione są poprzedniki.
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	=>
+	a, b a=>b	
+	0  0  1	
+	0  1  1	
+	1  0  0 
+    1  1  1
+
+	( a lub b ) = ( b lub a )	
+	( a  i  b ) = ( b  i  a ) 
+	(( a i b ) i c ) = ( a i ( b i c ))
+	(( a lub b ) lub c ) = ( a lub ( b lub c ))
+	( a => b ) = -b => -a
+	( a => b ) = ( -a lub b )
+	( a <=> b ) = (( a => b ) i ( b => a ))
+	- (a i b )  = ( -a lub -b ) dM
+	- (a lub b) = ( -a i -b )
+	( a i ( b lub c )) = (( a i b ) lub ( a i c )) 							   
+	( a lub ( b i c )) = (( a lub b ) i ( a lub c )
