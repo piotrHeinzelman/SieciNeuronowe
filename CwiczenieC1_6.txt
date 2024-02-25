@@ -1,0 +1,123 @@
+﻿Cwiczenie 1 Zadanie 6
+
+ 4 |   .  |   .  |   .  |  
+   |      +      +      +
+ 3 |  WP? |   .  |   .  |
+   |      +      +      +
+ 2 | Z OK |  OK  |   .  |
+   |      +      +      +
+ 1 |  OK  | W OK |  J ? |
+   |      +      +      +
+x      1      2      3
+
+wumpus:
+-Z11 => -WP11 i -WP12 i -WP21
+-Z21 => -WP11 i -WP21 i -WP22 i -WP31
+ Z12 => (WP11 lub WP22 lub WP13) i -WP12
+
+jama:
+-W11 => -J11 i -J12 i -J21
+-W12 => -J11 i -J12 i -J22 i -J13
+ W21 => ( J11 lub J22 lub J31 ) i -J21
+ 
+ część 1 - wumpus
+ 
+ porządkuję bazę wiedzy na temat Wumpus, 
+ rozdzielam (WP11 i WP12) na WP11, WP12,
+ pomijam powtarzające się fakty. 
+ 
+ KB { -Z11, -Z21, Z12,
+      -WP11, -WP12, -WP21, -WP22, -WP31
+	  (WP11 lub WP22 lub WP13) }
+	  
+    bazę mamy w postaci normalnej CNF koniunkcja alternatyw (A lub -B) i ( B lub -C lub -D )
+	
+	zatem jeśli P13 lub P22, -P22
+	            -----------------
+				      P13
+					  
+	mamy u nas koniunkcję literałów oraz zaprzeczone zdania
+	
+	( WP11 lub ( WP22 lub WP13 )),  -WP11,
+	------------------------------------------
+	           ( WP22 lub WP13 )
+			   
+			   
+     ( WP22 lub WP13 ), -WP11				   
+	 -------------------------
+	           WP13
+				   
+				   
+	a zatem wumpus jest w WP13 !
+	
+	oraz jeśli WP13 to -WP23
+	
+	
+Jama 31 ?
+
+ porządkuję bazę wiedzy na temat Jama, 
+ rozdzielam (-J11 i -J12) na J11, J12,
+ pomijam powtarzające się fakty. 
+	
+	jama:
+	KB { -W11, -W12, W21
+	     -J11, -J12, -J13, -J21, -J22 
+		 ( J11 lub J22 lub J31 ) }
+
+pytanie J31 ?	
+		 
+	rozwizanie trywialne rezolucja:
+	 ( J11 lub (J22 lub J31) ), -J11
+	 ---------------------------------
+		    (J22 lub J31)
+			
+    rezolucja2
+	(J22 lub J31), -J22
+	--------------------
+		J31
+		
+	do bazy mozna dodać J31	
+		
+    odpowiedz - jama w 31		
+	
+	
+	
+	
+Wiatr rozwiązanie wnioskowanie metodą rezolucji
+
+KB { -W11, -W12, W21
+	 -J11, -J12, -J13, -J21, -J22 
+	 ( J11 lub J22 lub J31 ) }	
+	 
+Próba dodania a = -J31 do KB 
+(test czy J31 jest prawdą, czyli czy w kratka 31 jest jama)		 
+
+ nowa -J31
+ 
+ rezolwenty: ( J11 lub J22 lub J31 )
+ 
+ wynik ( J11 lub J22 )
+ 
+ Do bazy możemy dodać ( J11 lub J22 ), 
+ zatem dodanie dodanie -J31 nie powoduje powstania sprzeczności w bazie, KB i -a jest spełanialne, zatem a jest nieprawdą
+ zatem -a jest prawdą, zatem -J31 = fałsz , J31 = prawda
+ zatem mamy jamę w J31 
+ 
+ 
+ --------------
+ 
+ Wiatr rozwiązanie wnioskowanie metodą rezolucji zdanie czy 
+ a=J31
+ KB i -a ? 
+ 
+ dodaję -J31 do KB
+ 
+ KB { -W11, -W12, W21
+	 -J11, -J12, -J13, -J21, -J22 
+	 ( J11 lub J22 lub J31 ) }	
+ 
+ rezolwenty : brak 
+ zatem zdanie -a jest fałszywe,
+ zatem zdanie a jest prawdziwe
+ zatem J31 - jama w 31
+ 

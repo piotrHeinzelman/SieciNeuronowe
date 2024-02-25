@@ -26,7 +26,9 @@ Wnioskowanie bardziej skomplikowanym procesem - nie jest automatyczne jak wynika
 	
 	
 
-Pytanie 2. Na czym polega i do czego sluzy regula wnioskowania? Przedstawic typowe reguly wnioskowania.
+Pytanie 2. Na czym polega i do czego słuzy reguła wnioskowania? Przedstawić typowe reguły wnioskowania.
+
+reguła wnioskowania służy do generowania nowych zdań - wniosków.
 
 Reguła wnioskowania:
 Dla rachunku zdań istnieją zupełne i poprawne procedury wnioskowania (dowodzenia zdań).
@@ -95,7 +97,7 @@ Jeśli w bazie wiedzy spełniony jest warunek dany poprzednikiem reguły to wnio
 	( a => b ) = -b => -a
 	( a => b ) = ( -a lub b )
 	( a <=> b ) = (( a => b ) i ( b => a ))
-	- (a i b )  = ( -a lub -b ) dM
-	- (a lub b) = ( -a i -b )
+	- (a i b )  = ( -a lub -b ) deMorgan
+	- (a lub b) = ( -a i -b )   deMorgan 
 	( a i ( b lub c )) = (( a i b ) lub ( a i c )) 							   
 	( a lub ( b i c )) = (( a lub b ) i ( a lub c )
