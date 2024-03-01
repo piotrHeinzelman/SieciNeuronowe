@@ -1,0 +1,40 @@
+Pytanie 2-1. 
+Wyjasnic różnice pomiędzy regułami wnioskowania stosowanymi w rachunku zdań a logice predykatów.
+
+reguły wnioskowania w rachunku zdań - 
+	przy czym reguła rezolucji wymaga wymagają postaci CNF czyli koniunkcji alternetyw, 
+	zaś reguła odrywania wymaga postaci kanonicznej Horna - koniukncji literałów.
+    i tu wnioskowanie polega na tworzeniu nowego zdania PRAWIDZIWEGO ze zdań które zakładamy ze są prawdziwe.
+	
+	
+	
+wnioskowanie w logice predykatów 
+polega na wyprowadzaniu formuł z aksjomatów (formuł niezależnych od wartościowania) i podzbioru formuł bazy wiedzy. 
+w logice predykatów operujemy, obiektami, funkcjami i wartościowaniami) i tak min(true,false) = false, max(true,false)=true	
+w logice predykatów z uwagi na stosowanie zmiennych nie możemy poprzestać na prostym wymaganiu identyczności formuł tworzących poprzednik.
+stosujemy za to łagodniejsze wymaganie że formuły są unifikowane - czyli mogą zostać sprowadzone do postaci identycznej przez zastosowanie odpowiednich podstawień.
+W bazie wiedzy eliminujemy kwantyfikatory ogólne, możemy użyć stałej SKOLEMA Vx Ev a 
+                                                                             ---------------
+																			 SUBST{v/F(X),a}
+																			 
+po czym możemy wnioskować regułami wnioskowania opartymi o zdania.
+
+Innymi słowy logikę predykatów można sprodzadzić do zestawu zdań - i wnioskować na podstawie zdań.
+
+W logice predykatów możemy spytać bazę wiedzy o prawdziwość formuły dla obiektu bądz obiektów.
+
+
+Pytanie 2-2. 
+Wyjasnić drugie twierdzenie o dedukcji i zwiazane z nia wnioskowanie metoda rezolucji. 
+Wnioskowanie przez zaprzeczenie polega na sprawdzeniu czy Spójna (wewnętrznie niesprzeczna) baza wiedzy KB
+po dodaniu do bazy zaprzeczonego zdania a nie stanie się bazą wewnętrznie sprzeczną.
+Jeśli baza po dodaniu zaprzeczonego zdania będzie w stanie sprzecznym - wówczas po dodaniu NIE zaprzeczonego zdania - będzie w stanie spójnym.
+w dziedzinie predykatów - musimy sprawdzić zbiór COMPOSITE  - krzyżowe (każdy z każdym) podstawień wszystkich obiektów z KB.
+Jeśli po takim cyklicznym sprawdzaniu  -A(x) lub B(x), C(Y) 
+                                       ----------------------
+                              O={x|Y}         A(Y)	
+jeśli zdarzyło się choć raz
+takie podstawienie O{x|Y} - to dowodzi możliwoścy wystąpienia zanegowanejgo zdania a zatem postuluje niemożność potwierdzenia wniosku przy aktualnym stanie wiedzy ( w KB).							  
+							  
+                                      
+
