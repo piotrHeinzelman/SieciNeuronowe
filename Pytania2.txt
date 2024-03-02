@@ -37,4 +37,10 @@ jeśli zdarzyło się choć raz
 takie podstawienie O{x|Y} - to dowodzi możliwoścy wystąpienia zanegowanejgo zdania a zatem postuluje niemożność potwierdzenia wniosku przy aktualnym stanie wiedzy ( w KB).							  
 							  
                                       
+Rozwiązać zadanie 9 z ćwiczenia C2 metodą wnioskowania wstecz (czyli wnioskowaniem wprost wychodząc od zapytania) ograniczone do jednego zapytania q_1. Utworzyć drzewo wyprowadzenia i podać odpowiedź bazy wiedzy na to zapytanie. 
 
+Sprawdzić, czy z bazy wiedzy KB wynikają q1 i q2.
+
+ P(x,y) i Q(y,z) => R(x,y)
+ R(x1,y1) i S(z1,v) i W(y1,v)=>W(x1,z1)
+ -Q(x2,y2)=>Q(y2,x2)
