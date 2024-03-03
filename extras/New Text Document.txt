@@ -1,0 +1,16 @@
+Powiazane z wykladem MSI rozdzialy róznych podreczników.
+
+1) Russel-Norvig (RN): Artificial Intelligence. A Modern Approach,  Prentice Hall, 3 ed., 2010
+
+W1-W4: System logicznego wnioskowania - RN_ch7, RN_ch8, RN_ch9 ;
+W5-W7: Przeszukiwanie przestrzeni stanów / poszukiwanie celu - RN_ch3, RN_ch6;
+W8: Planowanie - RN_ch10;
+W9: Uczenie przez obserwacje (indukcja) - RN_ch18.
+2) Mariusz Flasinski (MF): Introduction to Artificial Intelligence, Springer Int. Pub., 2016
+
+W10: Klasyfikacja - regresja - klasteryzacja  - MF_ch10
+W11: Sieci neuronowe - przeglad - MF_ch11
+3) Charu C. Aggarwal (CA) : Neural Networks and Deep Learning, Springer, Int. Pub.  2018
+
+W11: Sieci neuronowe - CA_ch1, CA_ch2
+W12: Wybrane sieci neuronowe - CA_ch7, CA_ch8
