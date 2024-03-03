@@ -101,3 +101,18 @@ Jeśli w bazie wiedzy spełniony jest warunek dany poprzednikiem reguły to wnio
 	- (a lub b) = ( -a i -b )   deMorgan 
 	( a i ( b lub c )) = (( a i b ) lub ( a i c )) 							   
 	( a lub ( b i c )) = (( a lub b ) i ( a lub c )
+	
+	
+	Sytuacja - jest faktem w określonym czasie (i/lub przestrzeni)
+	
+	
+	  ODRYWANIE                           REZOLUCJA
+	  a; a1; a2; (a i a1 i a2)=>b;        v lub a lub b; -b lub c;
+	  ----------------					 ---------------------
+	  b;							      v lub a lub /   /     c
+									      v lub a lub c
+	
+	  wymaga postać kan. HORN	     wymaga CNF  
+	  ( A; B=>C; DiE=>F )			 ( a lub b lub c...   );
+klauzula równoważna					 ( d lub e lub f );
+	  (-C lub -D lub B  )
