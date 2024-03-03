@@ -4,8 +4,62 @@ Rozwiązać zadanie 9 z ćwiczenia C2 metodą wnioskowania wstecz (czyli wniosko
 
 
 
+                      W ( x1, z1 )
+					        ^
+                            |
+                 -----------*----------
+                |           |          | 
+           R(x1, y1)   S(z1, v1)   W(y1,v1)
+		        ^
+				|
+		--------*---------
+		|                 |		
+    P(x2,y2)          Q( y2, z2 )
+						  ^
+						  |
+					  -Q(x3, y3)  
 
 
+     P(A,B);
+	-Q(C,B);
+	 S(D,E);
+	 W(C,E);
+	 
+	
+
+	
+	cele                          przypisania
+	{ q1= W(a,d)  }               Θ={}
+    { W(x1,z1) }                
+								  Θ={ x1|C z1|E}
+	{ W(C,E)}								
+    { R(C,y1)                S(E,v1) W(y1,v1) }								  
+								  Θ={ x1|C z1|E}
+    { P(x2,y2) Q(y2,z2)      S(E,v1) W(y1,v1) }								  								  
+								  Θ={ x1|C z1|E x2|x1(E) y2|y1 }
+    { P(E,y1)  Q(y1,z2)      S(E,v1) W(y1,v1) }								  								  								  
+    { P(E,y1) -Q(x3,y3)      S(E,v1) W(y1,v1) }								  								  								  
+									  Θ={ x1|C z1|E x2|x1(E) y2|y1 x3|z2 y3|y1 }
+    { P(E,y1) -Q(z2,y1)      S(E,v1) W(y1,v1)}	
+	+W(C,E);
+	                         Θ={ x1|C z1|E x2|x1(E) y2|y1 x3|z2 y3|y1 y1|C v1|E }
+	{ P(E,C) -Q(z2,C)      S(E,E) W(C,E)}								 
+	
+	-- fail S(E,E)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
