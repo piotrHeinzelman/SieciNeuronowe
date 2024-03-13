@@ -1,0 +1,27 @@
+Zadanie 3. Zastosować algorytm A* do  rozwiązania problemu przeszukiwania przestrzeni stanów podanej w zadaniu C3-10. Podać kolejne kroki tworzenia drzewa decyzyjnego i końcowy wynik.
+
+(A* umieszcza najmniejszy suma w CLOSE, 
+    jeśli następniki nie należą do open i close - dodaje
+	jeśli należą do open - wybiera mniejszy)
+
+końcowy wynik S->J4->J3->J8 koszt 5
+
+   OPEN                                       CLOSE {}
+1: { S }                                                 {}
+path
+ 
+2: {J1(2), J2(4), J3(3), J4(1)}                           { S }
+    s.j1   s.j2   s.j2   s.j4
+	
+3: {J1(2), J2(4), J3(1+1)     }                           { S, J4 }
+    s.j1   s.j2   s.j4.j3                                      s.j4
+	
+4: {J5(2+1), J6(2+2), J2(4), J3(2)     }                  { S, J4,  J1  }
+    s.j1.j5  s.j1.j6  s.j2   s.j4.j3                           s.j4 s.j1
+
+5: {J5(2+1), J6(2+2), J2(4), J3(2)     }                  { S, J4,  J1  }
+    s.j1.j5  s.j1.j6  s.j2   s.j4.j3                           s.j4 s.j1
+	
+6: {J5(2+1), J6(2+2), J2(4), J8(2+3)     }                  { S, J4,  J1,  J3(2)  }
+    s.j1.j5  s.j1.j6  s.j2   s.j4.j3.j8 CEL                      s.j4 s.j1 s.j4.j3
+	

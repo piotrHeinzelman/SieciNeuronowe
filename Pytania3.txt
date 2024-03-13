@@ -1,0 +1,44 @@
+Pytanie 3.1
+Podać różnice pomiędzy przeszukiwaniem strategią zachłanną  z heurystyką ("najbliższy celowi najpierw") 
+a strategią "przez wspinanie" w odniesieniu do: 
+
+A) sposobu wyboru następnego węzła:
+
+B) warunku zakończenia przeszukiwania:
+
+W strategii zachłannej „best-first” wybierany jest ten węzeł - ma najmniejszy kosz ścieżki od startu do osiągnięcia obeznego węzła F(n) = G(n).
+Strategia "poinformowana" zachłanna wybiera węzeł o najmniejszej odległości od celu min - h(n);
+
+Strategia przez wspinanie - wybiera węzeł o najmniejszym koszcie w najbliższym ruchu (czyli lokalną optymalizację). - jest to strategia nieodwracalna i wybiera jedną scieżkę.
+
+warunek zakończenia - jest taki sam - osiągnięcie celu.
+niemniej nie musi to być scieżka optymalna - z najniższym kosztem całej drogi.
+
+
+************************
+
+
+
+Pytanie 3-2. Wskazać na zalety i wady strategii przeszukiwania IDA* i RTA* względem strategii A* i na warunki ich poprawnego użycia.
+
+strategia IDA* 
+Przycina (ignoruje p rzeszukiwaniu) analizowane gałęzie i liście do kolejnych wartości Fb, jeśłi nie odnajdzie rozwiązania, wówczas próg Fb jest zwiększany i z przyciętych gałęzi niektóre są przywracane.
+Zysk z takiego postępowania jest taki, że algorytm wymaga mniej zasobów, ponieważ filtruje część mniej rokujących ścieżek.
+Szybciej rozwiązuje problem niż A*.
+Prostrza w implementacji.
+Wymaga "warunku spójnej heurystyki"
+Wady: brak w porównaniu do A*
+
+Strategia RTA* 
+może pracować bez pełnej wiedzy o problemie (on-line) - w trakcie powstawania mapy problemu.
+Strategia pozwala znależć rozwiązanie problemu - choć niekoniecznie najtańsze.
+Zastosowanie wariantu RTA*+ - dodaje do kosztu ścieżki - koszt nawrotu. - czyli promuje rozwiązania bez powrotów.
+Wariant RTA*- odejmuje koszt nawrotu - czyli nie promuje ścieżek bez nawrotów. 
+Wymaga "warunku spójnej heurystyki"
+
+
+
+
+
+
+
