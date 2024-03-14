@@ -1,0 +1,32 @@
+Pytanie 4-1. 
+Wyjaśnić rozwiązania problemu spełniania ograniczeń CSP metodami przeszukiwania ze stanem kompletnym (zupełnym) i przyrostowego (ze stanem niezupełnym).
+ 
+Poszukiwanie ze stanem kompletnym - polega na przypisaniu wartości wszystkim zmiennym, mimo że pewne ograniczenia mogą nie być spełnione. A następnie modyfikacji pewnej wartości i badania wpływu zmiany na ilość odraniczeń niespełnionych. Jeśli pewna zmiana zbliża nas do rozwiązania (liczba niespełnionych ograniczeń spada) - może być ona kolejnym krokiem. Jeśli zmiana ta oddala nas od celu (więcej niespełnionych ograniczeń) - wówczas zmiana jest porzucana (wycofywana) i szukamy innej wartości. 
+Poszukujemy tu lokalnych ekstremów pochodnej po jednej zmiennej.
+Stosujemy strategię z heurestyką określoną odległością do celu - czyli ilością niespełnionych wymagań. 
+
+ 
+
+Poszukiwanie przyrostowe polega na odwrotnym podejściu do problemu i utrzymywania stanu przy którym żadne ograniczenie nie jest niespełnione, czyli wszystkie ograniczenia są honorowane. 
+Poruszamy się metodą poszukiwania ścieżki idąc po bagnie. Kroczek tu - pierwsza zmienna przypisana, kroczek tam - druga zmienna przypisana, jeśli wpadamy na ograniczenie, lub czujemy że coraz bardziej grząsko - wycofujemy się ostrożnie. 
+
+
+
+Na czym polegają przestrzenie stanów (stany, akcje) w obu przypadkach i jakie strategie przeszukiwania są stosowane w problemie CSP?
+
+Przestrzenie stanów - to drzewa gdzie liśćmi są pełne stany gry - np. dokładne widoki szachownicy z pionkami i figurami. 
+
+każda akcja "Nasza" lub Przeciwnika to przejście do następnego stanu przez wykonanie pojedynczego posunięcia. Czyli przejście do kolejnego liścia -  ruch odbywa się w jedną stronę. W drzewie z górnych poziomów do kolejnego o jeden niżej. Choć najczęściej ruch w grze jest ruchem w jedną stronę    (ruch pionem w przód), czasami możliwe są przejścia do układu identycznego z poprzednim (gambit Ojca Mateusza), nie budujemy wtedy pętli, lecz powtarzamy układ gry na niższych poziomach. Dla każdego stanu gry możemy z pewnym przybliżeniem ocenić jego wartość - czyli ocenić czy pewien stan jest dla nas korzystny czy wręcz przeciwnie. Dla naszych posunięć będziemy wyboerać te pozycje które będa miały najwyższy ranking, natomiast ruchy przeciwnika - zakładamy że będzie wykonywał najlepsze dla siebie, czyli najmniej korzystne dla nas - czyli wybierze taki ruch - który z naszego punktu widzenia jest dla nas najmniej korzystny. O ile przeciwnik gra roządnie - takie założenie maksymalizuje man szanę zwycięstwa. Jeśli przeciwnik gra w sposób "nieobliczalny" - może wybrać pozycję z lepszym rankingiem dla nas, co może być dla nas miłym zaskoczeniem. Ale może spowodować że pewne ruchy odrzucimy przy optymalizacji przeszukiwania metoda mini-max. 
+
+
+Pytanie 4-2. 
+Wyjaśnić przeznaczenie i różnice pomiędzy algorytmami: 
+Mini-maks, cięcia alfa-beta i obcięty Mini-maks.
+
+Algorytm mini-max - wymaga rozwinięcia wszystkich stanów gry aż do zakończenia rozgrywki, a nastepnie propagacji oceny od liści w górę do korzenia - w celu wybrania najlepszego ruchu. Strategia ta działa w przypadku prostych gier - np. kółko i krzyżyk przy planszy 3x3. 
+W przypadku szachów niesposób przeanalizować wszystkich posunięć. 
+
+W przypadku takich gier jak szachy czy warcaby - musimy ograniczać rozwinięcia stanów gry np. stosując obcięty mini-max - czyli - przeszukujemy tylko kilka ruchów do przodu (obcięcie na poziomie 2,3,6 ruchów). Systemy grające w szachy stosują taki model przeszukiwania. W pierwszej chwili mogą ocenić pozycję jako dobrą, po pewnym czasie przeglądają drzewo głębiej i zmieniają ocenę i tak kilkaktornie pogłębiają przeglądane drzewo zmieniając ocenę. Niekiedy ocena jest potrzebna bardzo szybko - np. wtedy gdy oszukuje się na turniejach. Przy analizie partii można pozwolić komputerowi dłużej analizować pozycję - i otrzymać lepszej jakości analizę.
+
+Cięcia alfa-beta - podobnie jak obcinanie mini-max-a zmniejszają ilość przeglądanych stanów gry - z tą różnicą że nie obcinają drzewa przy pewnej głębokości, ale obcinają najgorzej rokujące gałęzie.
+
