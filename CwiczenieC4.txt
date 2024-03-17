@@ -1,0 +1,85 @@
+a) Zdefiniować operatory języka STRIPS dla planera PCzU w celu utworzenia planu dla rozwiązania problemu "Wieże Hanoi".
+
+
+definicje:
+	D1, D2, D3 ..Dn - dsyki o wielkościach 1-n
+	A,B,C - słupki
+	
+	Wolny ( Da ) - prawda jeśli na dysku Da nie leży inny dysk. Dotyczy także słupa - prawda jeśli na słupie nie leży nic.
+	
+	Na ( Da, Db ) - prawda jeśli dysk Da leży na dysku Db (także jeśli Db jest słupem)
+	
+	
+	   precond:  Wolny(Da), Wolny(na_który),  Na(Da,z_którego)
+	    Move ( Da, z_ktorego, na_ktory ) - przenosi dysk Da z dysku "z_którego" na dysk "na_który"
+	   effect:           -Wolny(na_ktory), -Na(Da,z_którego), Wolny(z_którego), Na(Da,na_który)
+	
+       "na_który" i "z_którego" może być dyskiem lub słupem	
+		
+
+	Init:
+		Wolny(D1) i Wolny(B) i Wolny (C) 
+		i Na(D3,A) i Na(D2,D3) i Na(D1,D2)
+	
+	
+	Goal:
+		Wolny(D1) i Wolny(A) i Wolny (B) 
+		i Na(D3,C) i Na(D2,D3) i Na(D1,D2)
+
+
+schema init
+	A	B	C
+	123					0
+	23		1			1
+	3	2	1			2
+	3	12				3
+		12	3			4	
+	1	2	3			5
+	1		23			6
+			123			7
+
+
+b) Narysować plan, który utworzyłby taki planer na podstawie zbioru operatorów zdefiniowanych w punkcie (a). 
+
+			 []	
+INIT		INIT
+	    Wolny(D1) i -Wolny(A) i Wolny(B) i Wolny (C)  i Na(D3,A) i Na(D2,D3) i Na(D1,D2)
+	
+																				Na(D1,D2), Wolny(D1), Wolny(C), -Wolny(D2) 
+																		  move(D1, D2, C) 
+																				        Na(D1,C),    -Wolny(C),  Wolny(D2) 	
+		
+		
+																						Na(D2,D3), Wolny(D2), Wolny(B), -Wolny(D3)
+																		  move(D2, D3, B) 
+																					    Na(D2,B),            -Wolny(B),  Wolny(D3)
+		
+		
+																						Na(D1,C),  Wolny(D2), -Wolny(C)
+		                                                                  move(D1, C, D2) 
+																						Na(D1,D2), -Wolny(D2), Wolny(C)
+																		  
+	
+																						Na(D3,A), Wolny(D3), Wolny(C), -Wolny(A)
+		                                                                  move(D3, A, C) 
+														Na(D3,C),                                            Wolny(A), -Wolny(C)	
+	
+--- n=2
+								                                                   Na(D1,D2), Wolny(D1), Wolny(A)
+	                                                                      move(D1, D2, A) 
+												                                 Wolny(D2),  Na(D1,A),  -Wolny(A)
+	
+
+								                                                 Wolny(D2),  Na(D2,B),  Wolny(D3)
+	                                                                      move(D2, B, D3) 
+												                   Na(D2,D3),    -Na(D2,B), -Wolny(D3), Wolny(B)	
+	
+	
+		Wolny(D1),			    	                    Na(D3,C)                         Na(D1,A), Wolny(D2), -Wolny(A)  
+	                                                                      move(D1, A, D2) 
+												                               Na(D1,D2),-Na(D1,A), -Wolny(D2), Wolny(A)
+
+		Wolny(D1) i Wolny(A) i Wolny (B) i -Wolny(C)  i Na(D3,C) i Na(D2,D3) i Na(D1,D2)
+GOAL		GOAL
+             []   
+
