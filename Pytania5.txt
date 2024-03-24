@@ -1,0 +1,62 @@
+Pytanie 5-1. Zaproponować modyfikację algorytmu uczenia drzewa decyzyjnego (DTL) ID3 w dwóch sytuacjach:
+
+1) Podfunkcja "Klasa_Wiekszościowa" 
+podaje jedynie dominującą klasę dla danego liścia drzewa. Należy zwiększyć jej dokładność.
+
+Można połaczyć dwie klasy, większościową, z klasą bardziej rozproszoną. np. formułą
+ klasaZastępcza = klasaA*10 + KlasaB  (zakładając że klasaA i klasaB przyjmuje wartości mniejsze od 10 )
+ 
+ 
+	np. w zad.2
+	X	a1	a2	a3	KlasaC Dodatkowa=(a1*10+a2) lub mniejsza dokładność a1*a2  a1-a2
+	x1	1	1	1	1		11*	1*  0*	
+	x2	1 	1	2	1		11*	1*	0*
+	x3	1	1	3	1		11*	1*	0*
+	x4	2	2	2	1		22-	4-	0*
+	x5	2	2	3	1		22-	4-	0*
+	x6	1	2	3	2		12*	2*	-1*
+	x7	1	2	2	2		12*	2*	-1*
+	x8	1	2	3	2		12*	2*	-1*
+	x9	2	1	1	2		21*	2*	1*
+	x10 2	2	1	2		22-	4-	0-
+	                                a1-a2 - 1 błąd
+								a1*a2 - 3 błędy	
+									
+									
+
+
+2) Algorytm ID3 może być stosowany jedynie do dyskretnych atrybutów. 
+Jak moźna korzystać z atrybutów o wartościach z dziedziny ciaglej?
+
+Powinniśmy skorzystać z Algorytmu C4.5 (Quinlan) będącego rozszerzeniem algorytmu ID3 
+
+Aby otrzymać podział dyskretny postępujemy następująco:
+Rozpatrujemy wartości atrybutu w AX, ustawmy je rosnąco od A0 do An.
+Dla każdej wartości dzielimy zbiór rekordów na te, które mają wartość atrybutu Ai oraz na te, 
+															które mają wartość >Ai.
+Wyliczamy "zakres", dla każdego takiego podziału.
+Wybieramy ten podział, dla którego zakres jest największy.
+
+
+
+Pytanie 5-2. Na czym polegaja różnice pomiedzy klasyfikatorem SVM a klasyfikatorem według liniowych funkcji potencjału w zakresie uczenia i funkcji decyzyjnej?
+
+Klasyfikator SVM - dzieli zbiów obiektów na dokładnie dwa zbiory przez przypisanie im wartości +1 i -1
+klasyfokator - jest miarą  odległości od optymalnej hiperpłaszczyzny H* cTa + a0 = 0 ( +1, -1 )
+
+hiperpłaszczyznę znajdujemy optymalizując (znajdując minimum) dla Q(w)=1/2||w||^2  = 1/2 *(w1^2 + w2^2 + w3^2...wn^2)
+w SVM pracujemy na zbiorze punktór separowanych liniowo.
+
+
+
+
+klasyfikatorem według liniowych funkcji potencjału
+Reguła decyzyjna klasyfikatora według funkcji potencjału: d( c ) = d1 (c, a(1)) - d2(c, a(2)),
+Klasyfikator rozdziela wg wartości klasaA d(c)>= 0 klasa B d(c)< 0
+
+
+
+
+
+
+

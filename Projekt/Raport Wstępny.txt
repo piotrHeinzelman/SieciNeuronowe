@@ -1,0 +1,11 @@
+W raporcie wstepnym nalezy:
+
+A. Przedstawic zadana metodyke lub algorytm Sztucznej Inteligencji 
+(w tym podac szczególowy pseudokod algorytmu i skomentowac go wlasnymi slowami); (0-2 p.)
+
+B. Przedstawic koncepcje rozwiazania zadanego problemu z wykorzystaniem zadanej
+metodyki lub algorytmu Sztucznej Inteligencji, tzn. wyrazic zadany problem w sposób
+wymagany przez zadana metodyke Szt. Int. 
+(wymagana reprezentacja problemu, wymagane funkcje interfejsu pomiedzy metoda a reprezentacja problemu 
+- w tym wyróznic w pseudokodzie metody taki interfejs) i omówic przewidywany cel i sposób weryfikacji poprawnosci
+proponowanego rozwiazania (0-3p.).
