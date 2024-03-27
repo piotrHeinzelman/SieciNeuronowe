@@ -1,3 +1,4 @@
 Zadanie 5.  
 
-Rozwiazac zadanie C5-3 (w analogii do rozwiazania zadania C5-2, jednak zmieniajac kryterium wyboru atrybutu na iloraz zysku informacji).
+Rozwiazac zadanie C5-3 
+(w analogii do rozwiazania zadania C5-2, jednak zmieniajac kryterium wyboru atrybutu na iloraz zysku informacji).
