@@ -1,0 +1,3 @@
+Piotr Heinzelman, N6, Java
+14
+Projekt N6. Sieć CNN do klasyfikacji obrazów znaków.
