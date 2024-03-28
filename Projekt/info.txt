@@ -1,3 +1,5 @@
 Piotr Heinzelman, N6, Java
 14
 Projekt N6. Sieć CNN do klasyfikacji obrazów znaków.
+
+https://victorzhou-com.translate.goog/blog/intro-to-cnns-part-1/?_x_tr_sl=en&_x_tr_tl=pl&_x_tr_hl=pl&_x_tr_pto=wapp#3-convolutions
