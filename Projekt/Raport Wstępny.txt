@@ -1,11 +1,107 @@
 W raporcie wstepnym nalezy:
 
 A. Przedstawic zadana metodyke lub algorytm Sztucznej Inteligencji 
-(w tym podac szczeg�lowy pseudokod algorytmu i skomentowac go wlasnymi slowami); (0-2 p.)
+(w tym podac szczególowy pseudokod algorytmu i skomentowac go wlasnymi slowami); (0-2 p.)
 
 B. Przedstawic koncepcje rozwiazania zadanego problemu z wykorzystaniem zadanej
-metodyki lub algorytmu Sztucznej Inteligencji, tzn. wyrazic zadany problem w spos�b
-wymagany przez zadana metodyke Szt. Int. 
+metodyki lub algorytmu Sztucznej Inteligencji, tzn. wyrazić zadany problem w sposób wymagany przez zadana metodyke Szt. Int. 
 (wymagana reprezentacja problemu, wymagane funkcje interfejsu pomiedzy metoda a reprezentacja problemu 
-- w tym wyr�znic w pseudokodzie metody taki interfejs) i om�wic przewidywany cel i spos�b weryfikacji poprawnosci
-proponowanego rozwiazania (0-3p.).
+- w tym wyróznic w pseudokodzie metody taki interfejs) i omówic przewidywany cel i sposób weryfikacji poprawnosci proponowanego rozwiazania (0-3p.).
+
+
+A temat: "Sieć CNN do klasyfikacji obrazów znaków."
+
+
+Metoda: 
+- zaprojektować i zaimplementować algorytm działania CNN (aproksymacji nauczonej funkcji) 
+  i algorytm uczenia sieci.
+  
+Problem:
+ - znaki z MNIST lub podobne. Do bazy przekazywać na wejście obraz, na wyjście etykietę klasy.
+
+Sterowanie:
+zrealizować uczenie i testowanie kilku modeli z różną liczbą filtrów i warstw.
+określać stopę błędu klasyfikacji po każdej epoce.
+wyznaczyć macież pomyłek (miedzyklasowych) procesu klasyfikacji po zakończeniu uczenia.
+
+
+Zadana metodyka / Algorytm:
+
+Algorytm sztucznej inteligencji dobrany do zadania klasyfikacji obrazów (znaki pisane ręcznie, 10 klas znaków)
+- w tym przypadku założona w warunkach zadania - sieć głęboka typu CNN z warstwą wyjściową typu soft-max
+
+Struktura sieci - warstwowa:
+ 
+1) Warstwa wejściowa [ szer * wys ] obrazy monochromatyczne zakładam rozmiar obrazu = szer=wys=20pix
+
+2) Blok warstw filtrujących, funkcja aktywacji ReLU,
+
+   i) Filtr	f
+      - warstwa cech H = X splot f   
+      - warstwa łącząca - zmniejszająca rozdzielczość karty wyników.
+
+   
+3) warstwa Padding - zapobiega utracie danych w okolicy krawędzi - przez odsunięcie krawędzi od krawędzi i dodania wartości 0.
+
+4) zaspół warstw wyjściowych
+
+ a) blok dwuwarstwowego perceptronu ("Fully Connected") - pełni rolę klasyfikatora
+ b) warstwa soft-max - przygotowuje wynik - określa rozkład prawdopodobieństwa przynależności do klas.
+ 
+ 
+Pseudokod:
+
+uczenie sieci
+Dopóki Średni_Błąd_Kwadratowy < zadana_wielkość_błędu
+{
+	Dla każdego Obrazu z Listy_Danych_Treningowych
+	{
+	Zaprezentuj Obraz z listy Sieci (czyli X = Obraz; )
+	
+	Znajdz odpowiedz sieci na wektor X;
+
+	Oblicz wielkość błędu dla Obrazu
+	Oblicz i wprowadz poprawki wag w sieci.
+	
+	Zapamiętaj błąd klasyfikacji dla Obrazu
+	}
+	Oblicz Średni_Błąd_Kwadratowy ze wszystkich błędów //(w tej epoce)
+	Zapamiętaj w bazie wielkość błędu epoki
+}
+
+
+Problem wyrażone jest za pomocą wektora szer*wys licz o wartościach od {0-255} (skala szarości)
+
+Celem jest osiągnięcie minimum funkcji błędu klasyfikacji wektorów wejściowych i przypisania ich do 10 etykietowanych klas.
+
+
+
+https://www.freecodecamp.org/news/an-intuitive-guide-to-convolutional-neural-networks-260c2de0a050
+
+
+
+DLA KAŻDEGO słowa W SŁOWACH
+{   
+DOŁĄCZ (słowo „-”)
+   list ‹ PIERWSZA_LITERA (słowo)
+   JEŻELI (JEST_SAMOGŁOSKA (list)) {
+     DOŁĄCZ (słowo „yay”)
+   } INACZEJ {
+     DOŁĄCZ (słowo, list)
+     DOŁĄCZ (słowo „ay”)
+     WYRZUĆ_PIERWSZE (słowo)
+   }
+}
+
+jeżeli numer karty kredytowej jest ważny to
+    wykonanie transakcji w oparciu o numer karty i zamówienie 
+w przeciwnym razie
+    wyświetlenie wiadomości o niepowodzeniu
+koniec warunku
+
+wczytaj(a)
+wczytaj(b)
+Jeśli a > b to
+	wypisz(a)
+w przeciwnym razie
+	wypisz(b)
