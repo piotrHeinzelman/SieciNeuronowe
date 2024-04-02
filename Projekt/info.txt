@@ -16,3 +16,4 @@ https://edu.pjwstk.edu.pl/wyklady/nai/scb/wyklad3/w3.htm
 https://home.agh.edu.pl/~asior/stud/doc/BP_12.pdf
 https://www.rosczak.com/mlp/algorithm.html
 https://www.unite.ai/pl/co-to-jest-propagacja-wsteczna/
+https://www.rosczak.com/aebp/algorithm.html
