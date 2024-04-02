@@ -9,4 +9,6 @@ backPropagation
 !!  http://galaxy.agh.edu.pl/~vlsi/AI/backp_t/backprop.html 
 !!  http://wmii.uwm.edu.pl/~bnowak/userfiles/downloads/dydaktyka/Metody_Inzynierii_Wiedzy/Lab_wsteczna_propagacja.pdf  
 
+https://wikizmsi.zut.edu.pl/uploads/7/7b/BP_pres.pdf
+
 https://ichi.pro/pl/algorytm-propagacji-wstecznej-147087034401625
