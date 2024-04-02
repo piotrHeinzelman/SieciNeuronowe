@@ -18,3 +18,5 @@ https://www.rosczak.com/mlp/algorithm.html
 https://www.unite.ai/pl/co-to-jest-propagacja-wsteczna/
 https://www.rosczak.com/aebp/algorithm.html
 https://home.agh.edu.pl/~asior/stud/doc/BP_12.pdf
+
+https://www.youtube.com/watch?v=9RN2Wr8xvro&t=113s
