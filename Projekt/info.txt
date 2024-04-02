@@ -7,3 +7,5 @@ https://victorzhou-com.translate.goog/blog/intro-to-cnns-part-1/?_x_tr_sl=en&_x_
 
 backPropagation
 http://galaxy.agh.edu.pl/~vlsi/AI/backp_t/backprop.html
+
+http://wmii.uwm.edu.pl/~bnowak/userfiles/downloads/dydaktyka/Metody_Inzynierii_Wiedzy/Lab_wsteczna_propagacja.pdf
