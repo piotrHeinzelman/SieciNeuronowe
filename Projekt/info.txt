@@ -14,3 +14,4 @@ https://wikizmsi.zut.edu.pl/uploads/7/7b/BP_pres.pdf
 https://ichi.pro/pl/algorytm-propagacji-wstecznej-147087034401625
 https://edu.pjwstk.edu.pl/wyklady/nai/scb/wyklad3/w3.htm
 https://home.agh.edu.pl/~asior/stud/doc/BP_12.pdf
+https://www.rosczak.com/mlp/algorithm.html
