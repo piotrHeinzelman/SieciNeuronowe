@@ -1,3 +1,26 @@
-Pytanie 6-1.  Jakie są zalety stosowania entropii krzyżowej w porównaniu z błędem kwadratowym jako funkcji straty w procesie uczenia wag sieci neuronowej.
+Pytanie 6-1.  
+Jakie są zalety stosowania entropii krzyżowej w porównaniu z błędem kwadratowym jako funkcji straty w procesie uczenia wag sieci neuronowej.
 
-Pytanie 6-2. Jakie jest przeznaczenie algorytmu BPTT ("wsteczna propagacja wzdłuż czasu")? Przedstawić zasadnicze etapy tego algorytmu.
+Gradient entropii krzyżowej względem wag warstwy wyjściowej wpołączeniu z logistyczną (sigmoidalną) funkcją aktywacji posiadaciekawą własność – zanika w nim zależność od pochodnej funkcjisigmoidalnej. Funkcja ta może być użyta jako funkcja straty dla kolejnej (i ostatniej ) warstwy soft-max.
+
+
+Pytanie 6-2. 
+Jakie jest przeznaczenie algorytmu BPTT ("wsteczna propagacja wzdłuż czasu")? 
+Algorytm BPTT - to algorytm uczenia sekwencji, dane składają się z kilku (więcej niż 2) wektorów indeksowanych chwilą czasową. 
+
+Przedstawić zasadnicze etapy tego algorytmu.
+
+1) obliczyć odpowiedz sieci na wymuszenie zbiorem indeksowanych wektorów ( x(t), x(t+1), ... x(t+N) )
+   dla pojedynczej sekwencji (analogiczna do pojedynczej warstwy).
+		2) obliczyć funkcję straty (wielkość błędu) dla tej warstwy.
+		3) obliczyć propagację wsteczną błędu 
+		4) obliczyć wektor zmian wag dla warstwy obecjen i poprzednich
+		5) zaktualizować wektory wag dla warstw obecnej i poprzednich
+		6) zapisać wektor wyjść dla następnej chwili czasowej
+
+	7) przejść do kolejnej chwili czasowej
+	8) powtórzyć od 2 dla kolejnych zestawów chwil czasowych aż do pełnego zbioru
+
+9) powtarzaj od 1 dla wszystkich próbek wejściowych w epoce
+   
+
