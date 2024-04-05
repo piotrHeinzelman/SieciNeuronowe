@@ -1,12 +1,29 @@
 package heinzelman.pl;
 
+import heinzelman.pl.neurons.Layer;
+import heinzelman.pl.neurons.Neuron;
 
 public class project {
-
     public static void main(String[] args) {
-        System.out.println( "?" );
+        Pro pro = new Pro();
+        pro.run();
     }
 }
+
+
+class Pro{
+    public Pro() {
+    }
+
+    public void run(){
+        System.out.println( "start" );
+
+        Layer layer0 = new Layer( 2 ,  2  );
+        System.out.println( layer0 );
+    }
+}
+
+
 
 
 /*
