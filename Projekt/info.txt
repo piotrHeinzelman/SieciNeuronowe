@@ -24,3 +24,7 @@ https://www.youtube.com/watch?v=9RN2Wr8xvro&t=113s
 
 cNN back propagation
 https://pavisj.medium.com/convolutions-and-backpropagations-46026a8f5d2c
+
+
+MNIST
+https://www.youtube.com/watch?v=0idoEomDc9E

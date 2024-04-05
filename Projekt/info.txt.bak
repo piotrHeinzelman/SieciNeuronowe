@@ -1,0 +1,26 @@
+Piotr Heinzelman, N6, Java
+14
+Projekt N6. Sieć CNN do klasyfikacji obrazów znaków.
+
+https://victorzhou-com.translate.goog/blog/intro-to-cnns-part-1/?_x_tr_sl=en&_x_tr_tl=pl&_x_tr_hl=pl&_x_tr_pto=wapp#3-convolutions
+
+
+backPropagation
+!!  http://galaxy.agh.edu.pl/~vlsi/AI/backp_t/backprop.html 
+!!  http://wmii.uwm.edu.pl/~bnowak/userfiles/downloads/dydaktyka/Metody_Inzynierii_Wiedzy/Lab_wsteczna_propagacja.pdf  
+
+https://wikizmsi.zut.edu.pl/uploads/7/7b/BP_pres.pdf
+
+https://ichi.pro/pl/algorytm-propagacji-wstecznej-147087034401625
+https://edu.pjwstk.edu.pl/wyklady/nai/scb/wyklad3/w3.htm
+https://home.agh.edu.pl/~asior/stud/doc/BP_12.pdf
+https://www.rosczak.com/mlp/algorithm.html
+https://www.unite.ai/pl/co-to-jest-propagacja-wsteczna/
+https://www.rosczak.com/aebp/algorithm.html
+https://home.agh.edu.pl/~asior/stud/doc/BP_12.pdf
+
+https://www.youtube.com/watch?v=9RN2Wr8xvro&t=113s
+
+
+cNN back propagation
+https://pavisj.medium.com/convolutions-and-backpropagations-46026a8f5d2c
