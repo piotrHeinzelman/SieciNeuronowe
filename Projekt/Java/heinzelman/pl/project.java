@@ -18,11 +18,21 @@ class Pro{
 
     public void run(){
         System.out.println( "start" );
-
+/*
         Layer layer0 = new Layer( 2, 3, new FunSigMod() );
         layer0.setX( new Double[]{ 1.0, 2.0 } );
         layer0.calcU();
+        layer0.calcY();
+        layer0.calcError( new Double[]{ 1.0, 2.0, 3.0 } );
         System.out.println( layer0 );
+ */
+        Layer layer0 = new Layer( 3, 2, new FunSigMod() );
+        layer0.setX( new Double[]{ .27, .95, .73 } );
+        layer0.calcU();
+        layer0.calcY();
+        layer0.calcError( new Double[]{ 1.0, 0.0 } );
+        System.out.println( layer0 );
+
     }
 }
 
