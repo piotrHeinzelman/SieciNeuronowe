@@ -1,5 +1,6 @@
 package heinzelman.pl;
 
+import heinzelman.pl.neurons.FunSigMod;
 import heinzelman.pl.neurons.Layer;
 import heinzelman.pl.neurons.Neuron;
 
@@ -18,7 +19,9 @@ class Pro{
     public void run(){
         System.out.println( "start" );
 
-        Layer layer0 = new Layer( 2 ,  2  );
+        Layer layer0 = new Layer( 2, 3, new FunSigMod() );
+        layer0.setX( new Double[]{ 1.0, 2.0 } );
+        layer0.calcU();
         System.out.println( layer0 );
     }
 }
