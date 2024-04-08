@@ -1,6 +1,5 @@
 package heinzelman.pl.neurons;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -8,14 +7,11 @@ public class Neuron {
 
     private int Xsize;
     private Double[] W;
-    private Layer myLayer;
 
-
-    public Neuron( Layer parentLayer, int Xsize ) {
-        this.myLayer=parentLayer;
+    public Neuron( int Xsize ) {
         this.Xsize=Xsize;
         this.W = new Double[Xsize];
-        initWags();
+        initRandomWags();
     }
 
 
@@ -31,21 +27,24 @@ public class Neuron {
     public Double[] getW() {
         return W;
     }
+    public Double getWi(int i){ return W[i]; }
 
+    public void updateWiBy(Double delta, int i){
+        W[i]+=delta;
+    }
 
-    public void initWags(){
+    public void initRandomWags(){
         Random r = new Random();
         for (int i=0;i<Xsize;i++) {
             W[i] = r.nextDouble();
         }
     }
 
-
+    @Deprecated // only for test
     public void setWags( Double[] newWags ){
         for ( int i=0; i<Xsize; i++ ){
             W[i] = newWags[i];
         }
-
     }
 
     @Override
