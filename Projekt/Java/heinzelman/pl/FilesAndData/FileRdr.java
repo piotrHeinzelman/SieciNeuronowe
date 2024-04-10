@@ -2,35 +2,31 @@ package heinzelman.pl.FilesAndData;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStream;
-
-// x = [ x0 = class num, x1 - (char)[0,1]
-// char = ushort
-
-
 
 public class FileRdr {
     int fileRowNum=60;//60000;
-    byte[] trainData=new byte[fileRowNum*784+14];
+    byte[] trainData=new byte[fileRowNum*28*28];
     byte[] emptyX=new byte[784];
     int offset=0;
 
 
     public FileRdr() {
         byte[] labelaData;
-        String  trainDataFileName="D:\\SieciNeuronowe\\Projekt\\Data\\train-images.idx3-ubyte";
-        String labelsDataFileName="D:\\SieciNeuronowe\\Projekt\\Data\\train-labels.idx1-ubyte";
+        String  trainFS="D:\\SieciNeuronowe\\Projekt\\Data\\train-images-idx3-ubyte";
+        String  labelFS="D:\\SieciNeuronowe\\Projekt\\Data\\train-labels-idx1-ubyte";
         try {
-            File file = new File(trainDataFileName );
-            InputStream insputStream = new FileInputStream(file);
-            insputStream.read( trainData , 14 , fileRowNum*784  );
+            File trainF = new File( trainFS );
+            InputStream insputStream = new FileInputStream( trainF );
+            insputStream.skip(12);
+            insputStream.read( trainData, 0, fileRowNum*784 );
             insputStream.close();
 
-            File fileLabels = new File( labelsDataFileName );
-            insputStream = new FileInputStream(fileLabels);
+            File labelF = new File( labelFS );
+            insputStream = new FileInputStream( labelF );
               labelaData = new byte[ fileRowNum ];
-            insputStream.read( labelaData , 0 , fileRowNum  );
+            insputStream.skip(8);
+            insputStream.readNBytes( labelaData, 0, fileRowNum ); // magic numbers
             insputStream.close();
 
             for ( int i=0;i<fileRowNum;i++ ){

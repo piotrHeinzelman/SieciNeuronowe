@@ -1,15 +1,11 @@
 package heinzelman.pl;
 
 import heinzelman.pl.FilesAndData.FileRdr;
+import heinzelman.pl.FilesAndData.Tools;
 import heinzelman.pl.neurons.FunSigMod;
 import heinzelman.pl.neurons.FunSigMod_dF_one_FOR_crossEntropy;
 import heinzelman.pl.neurons.Layer;
 import heinzelman.pl.neurons.Net;
-
-import java.io.File;
-import java.io.FileReader;
-import java.net.FileNameMap;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class project {
@@ -27,18 +23,9 @@ class Pro{
     public void run(){
         Random rand = new Random();
         FileRdr rdr = new FileRdr();
-        char[] table={'"','@','$','#','*','!','=',';',':','~','-',',','.',',','-','~',':',';','=','!','*','#','$','@','"'};
 
-        byte[] X = rdr.readX( 3 );
-        for (int i=0;i<28;i++){
-            StringBuffer out=new StringBuffer(28);
-            for (int j=0;j<28;j++){
-                out.append( table [ 1+ (  X[(i*28)+j]+128  )/11 ] );
-                //out.append( X[i*28+j] );
-            }
-            System.out.println( out.toString() );
-        }
-        System.out.println( X[0]+""+X[1]+""+X[2]+""+X[3]+""+X[4]+""+X[5] );
+        byte[] X = rdr.readX( 2 );
+            new Tools().printX( X );
 
         if ( false ) { // TURN OFF BUILD NET !
             Layer layer0 = new Layer(28 * 28, 28 * 28, new FunSigMod());
