@@ -11,7 +11,8 @@ import java.io.InputStream;
 
 
 public class FileRdr {
-    byte[] trainData;
+    int fileRowNum=60;//60000;
+    byte[] trainData=new byte[fileRowNum*784+14];
     byte[] emptyX=new byte[784];
     int offset=0;
 
@@ -21,29 +22,18 @@ public class FileRdr {
         String  trainDataFileName="D:\\SieciNeuronowe\\Projekt\\Data\\train-images.idx3-ubyte";
         String labelsDataFileName="D:\\SieciNeuronowe\\Projekt\\Data\\train-labels.idx1-ubyte";
         try {
-            // input:
-            //FileReader fr = new FileReader( trainDataFileName );
-            //fr.read( trainData );
-            //fr.close(); // char[]
-
             File file = new File(trainDataFileName );
-            //Instantiate the input stread
             InputStream insputStream = new FileInputStream(file);
-            long length = file.length();
-            byte[] trainData = new byte[(int) length];
-
-            insputStream.read( trainData );
+            insputStream.read( trainData , 14 , fileRowNum*784  );
             insputStream.close();
 
             File fileLabels = new File( labelsDataFileName );
-            //Instantiate the input stread
-                 insputStream = new FileInputStream(fileLabels);
-                   labelaData = new byte[(int) fileLabels.length()];
-
-            insputStream.read( labelaData );
+            insputStream = new FileInputStream(fileLabels);
+              labelaData = new byte[ fileRowNum ];
+            insputStream.read( labelaData , 0 , fileRowNum  );
             insputStream.close();
 
-            for ( int i=0;i<labelaData.length;i++ ){
+            for ( int i=0;i<fileRowNum;i++ ){
                 trainData[i*784]=labelaData[i];
             }
         } catch ( Throwable th ){ System.out.println( th ); }
@@ -53,11 +43,10 @@ public class FileRdr {
     public byte[] readX( int i ) {
         offset=784*i;
         for (int j=0;j<784;j++) {
-            emptyX[j]  = trainData[ offset+j ];
+            emptyX[j] = trainData[ offset+j ];
         }
         return emptyX;
     }
-
 
 
 }

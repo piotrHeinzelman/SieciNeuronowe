@@ -1,8 +1,6 @@
 package heinzelman.pl.neurons;
 
 
-import heinzelman.pl.FilesAndData.LabelAndData;
-
 import java.util.ArrayList;
 
 public class Net {
@@ -17,10 +15,11 @@ public class Net {
         myLayers.add( nextLater );
     }
 
-    public Double calcucateOneCycle( LabelAndData labelAndData ){
+    public Double calcucateOneCycle( byte[] X ){
         for (int i=0;i< myLayers.size();i++){
             Layer layer=myLayers.get(i);
-                  layer.setX(  );
+            //layer.setX(   X[i] );
+            //System.out.println( X[i] );
         }
         return 0.0;
     }

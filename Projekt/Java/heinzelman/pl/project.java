@@ -27,8 +27,18 @@ class Pro{
     public void run(){
         Random rand = new Random();
         FileRdr rdr = new FileRdr();
+        char[] table={'"','@','$','#','*','!','=',';',':','~','-',',','.',',','-','~',':',';','=','!','*','#','$','@','"'};
 
-        System.out.println( rdr.readX( rand.nextInt() ) );
+        byte[] X = rdr.readX( 3 );
+        for (int i=0;i<28;i++){
+            StringBuffer out=new StringBuffer(28);
+            for (int j=0;j<28;j++){
+                out.append( table [ 1+ (  X[(i*28)+j]+128  )/11 ] );
+                //out.append( X[i*28+j] );
+            }
+            System.out.println( out.toString() );
+        }
+        System.out.println( X[0]+""+X[1]+""+X[2]+""+X[3]+""+X[4]+""+X[5] );
 
         if ( false ) { // TURN OFF BUILD NET !
             Layer layer0 = new Layer(28 * 28, 28 * 28, new FunSigMod());

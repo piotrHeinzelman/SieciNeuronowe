@@ -1,9 +1,6 @@
 package heinzelman.pl.neurons;
 
-import heinzelman.pl.FilesAndData.LabelAndData;
-
 import java.util.ArrayList;
-
 
 public class Layer {
 
@@ -152,7 +149,7 @@ public class Layer {
 
 
 
-
+/*
 
 
 
@@ -223,3 +220,6 @@ public class Layer {
                 //System.out.println( layer0 );
                 //System.out.println( layer1 );
                 }
+
+
+ */
