@@ -28,3 +28,6 @@ https://pavisj.medium.com/convolutions-and-backpropagations-46026a8f5d2c
 
 MNIST
 https://www.youtube.com/watch?v=0idoEomDc9E
+
+szybkie mnożenie macierzy
+https://www.youtube.com/watch?v=fDAPJ7rvcUw
