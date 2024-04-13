@@ -2,8 +2,8 @@ package heinzelman.pl;
 
 import heinzelman.pl.FilesAndData.FileRdr;
 import heinzelman.pl.FilesAndData.Tools;
-import heinzelman.pl.neurons.FunSigMod;
-import heinzelman.pl.neurons.FunSigMod_dF_one_FOR_crossEntropy;
+import heinzelman.pl.F.FunSigMod;
+import heinzelman.pl.F.FunSigMod_dF_one_FOR_crossEntropy;
 import heinzelman.pl.neurons.Layer;
 import heinzelman.pl.neurons.Net;
 import java.util.Random;
@@ -51,7 +51,7 @@ class Pro{
         Double[] inputX = { 1.0, 2.0 };
         layer0.setX( inputX );
         layer0.calcU();
-        layer0.calcY();
+        layer0.calcZ();
 
         Double[] layer0Y = layer0.getY(); // layer0Y = layet1X
 
@@ -64,7 +64,7 @@ class Pro{
 
         layer1.setX( layer1X );
         layer1.calcU();
-        layer1.calcY();
+        layer1.calcZ();
 
 
         // BACKPROPAGATION layer 1:
@@ -98,7 +98,7 @@ class Pro{
         Double[] inputX = { 1.0, 2.0 };
         layer0.setX( inputX );
         layer0.calcU();
-        layer0.calcY();
+        layer0.calcZ();
 
         Double[] layer0Y = layer0.getY(); // layer0Y = layet1X
 
@@ -112,7 +112,7 @@ class Pro{
 
             layer1.setX( layer1X );
             layer1.calcU();
-            layer1.calcY();
+            layer1.calcZ();
 
 
             // BACKPROPAGATION layer 1:
