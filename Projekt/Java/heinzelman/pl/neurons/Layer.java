@@ -25,12 +25,10 @@ public class Layer {
     private Teacher teacher = null;
 
 
-    public Layer( int Xsize, int Zsize, Fun F , Layer prevLayer, Layer nextLayer ) {
+    public Layer( int Xsize, int Zsize, Fun F  ) {
         this.Xsize=Xsize;
         this.Zsize=Zsize;
         this.F = F;
-        if ( prevLayer!=null ) this.prevLayer=prevLayer;
-        if ( nextLayer!=null ) this.nextLayer=nextLayer;
 
 
         this.X = new Double[ Xsize ];
@@ -48,12 +46,10 @@ public class Layer {
     }
 
     @Deprecated // for test only !
-    public Layer( int Xsize, int Zsize, Fun F , Layer prevLayer, Layer nextLayer, List<Double[]> WList ) {
+    public Layer( int Xsize, int Zsize, Fun F , List<Double[]> WList ) {
         this.Xsize=Xsize;
         this.Zsize=Zsize;
         this.F = F;
-        this.prevLayer=prevLayer;
-        this.nextLayer=nextLayer;
 
         this.X = new Double[ Xsize ];
         this.Z = new Double[ Zsize ];
@@ -128,7 +124,10 @@ public class Layer {
     public Double getWspUcz() { return wspUcz; }
 
     public void setX(Double[] X ) { this.X = X; }
-    public void setTeacher( Teacher teacher ) { this.teacher = teacher; }
+    public void setNextLayer(Layer nextLayer) { this.nextLayer = nextLayer; }
+    public void setPrevLayer(Layer prevLayer) { this.prevLayer = prevLayer; }
+
+    public void setTeacher(Teacher teacher ) { this.teacher = teacher; }
 
 
 

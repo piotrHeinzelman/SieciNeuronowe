@@ -2,10 +2,13 @@ package heinzelman.pl;
 
 import heinzelman.pl.FilesAndData.FileRdr;
 import heinzelman.pl.FilesAndData.Tools;
-import heinzelman.pl.F.FunSigMod;
-import heinzelman.pl.F.FunSigMod_dF_one_FOR_crossEntropy;
+import heinzelman.pl.F.*;
 import heinzelman.pl.neurons.Layer;
 import heinzelman.pl.neurons.Net;
+import heinzelman.pl.neurons.Teacher;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class project {
@@ -23,24 +26,40 @@ class Pro{
     public void run(){
         Random rand = new Random();
         FileRdr rdr = new FileRdr();
+        Fun sigmod = new FunSigMod();
 
         byte[] X = rdr.readX( 2 );
             new Tools().printX( X );
 
-        if ( false ) { // TURN OFF BUILD NET !
-            Layer layer0 = new Layer(28 * 28, 28 * 28, new FunSigMod());
-            Layer layer1 = new Layer(28 * 28, 3, new FunSigMod());
+        if ( true ) { // TURN OFF BUILD NET !
+            List<Double[]>data0= new ArrayList<>();
+                          data0.add( new Double[]{  1.0 ,-1.0 }  );
+                          data0.add( new Double[]{  1.0 , 1.0 }  );
+                          data0.add( new Double[]{ -1.0 , 1.0 }  );
+            Layer layer0=new Layer( 2, 3,   sigmod , data0 );
+
+            List<Double[]>data1= new ArrayList<>();
+            data1.add( new Double[]{  1.0 , -1.0,  1.0 } );
+            data1.add( new Double[]{ -1.0 ,  1.0, -1.0 } );
+
+            Layer layer1=new Layer(  3, 2,  sigmod , data1);
+
+            //Layer layer0 = new Layer(28 * 28, 28 * 28, new FunSigMod());
+            //Layer layer1 = new Layer(28 * 28, 3, new FunSigMod());
 
             Net net = new Net();
-            net.addNextLayer(layer0);
-            net.addNextLayer(layer1);
+            net.addNextLayer( layer0 );
+            net.addNextLayer( layer1 );
+            net.addTeacherForLast( new Teacher());
+
+            byte[] X_ = new byte[]{ Byte.valueOf( "1" ), Byte.valueOf( "2" )};
+            net.calcucateOneCycle( X_ );
+
         }
     }
 
 
-
-
-
+    /*
     public void runEntr(){
         // FORWARD layer 0:
         Layer layer0 = new Layer( 2, 3, new FunSigMod() );
@@ -85,7 +104,9 @@ class Pro{
         System.out.println( layer0 );
         System.out.println( layer1 );
     }
+    */
 
+    /*
     public void runNormalLayer(){
         System.out.println( "start" );
 
@@ -133,6 +154,8 @@ class Pro{
         //System.out.println( layer0 );
         //System.out.println( layer1 );
     }
+
+    */
 }
 
 

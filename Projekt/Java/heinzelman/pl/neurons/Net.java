@@ -12,7 +12,17 @@ public class Net {
     }
 
     public void addNextLayer ( Layer nextLater ) {
+        Layer last = null;
+        if ( myLayers.size()>0 ) {
+            last = myLayers.get( myLayers.size()-1 );
+            last.setNextLayer( nextLater );
+            nextLater.setPrevLayer( last );
+        }
         myLayers.add( nextLater );
+
+    }
+    public void addTeacherForLast( Teacher teacher ) {
+        myLayers.get( myLayers.size()-1).setTeacher( teacher );
     }
 
     public Double calcucateOneCycle( byte[] X ){
