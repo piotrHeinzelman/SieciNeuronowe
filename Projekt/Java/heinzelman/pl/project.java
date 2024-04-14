@@ -29,12 +29,12 @@ class Pro{
         Fun sigmod = new FunSigMod();
         Fun softmax = new FunSoftmax();
 
-        if (false) { // read data
+        if ( true ) { // read data
             byte[] X = rdr.readX(2);
             new Tools().printX(X);
         }
 
-        if ( true ) { // TURN OFF BUILD NET !
+        if ( false ) { // TURN OFF BUILD NET !
             List<Double[]>data0= new ArrayList<>();
                           data0.add( new Double[]{  1.0 ,-1.0 }  );
                           data0.add( new Double[]{  1.0 , 1.0 }  );

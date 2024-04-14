@@ -27,19 +27,16 @@ public class Net {
 
     public Double calcucateOneCycle( Double[] X ){
 
-System.out.println( "X:" );
         Double[] nextX=X;
         for (int i=0;i< myLayers.size();i++){
             Layer layer=myLayers.get(i);
             if ( nextX==null ) { layer.setX( X ); }
             else { layer.setX( nextX ); }
             nextX = layer.calcZ();
-print( nextX );
         }
         // if softmax
         if ( true ) { myLayers.get(myLayers.size()-1).Softmax_normalizeMyZ(); }
 
-        System.out.println( " *** " );
 
         Double[] S = null;
         // backprop
