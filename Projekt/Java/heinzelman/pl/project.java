@@ -54,7 +54,7 @@ class Pro{
             net.addNextLayer( layer1 );
             net.addTeacherForLast( new Teacher());
 
-            Double[] X_ = new Double[]{  1.0, 2.0 };
+            Double[] X_ = new Double[]{ 1.0, 2.0 };
             net.calcucateOneCycle( X_ );
 
         }

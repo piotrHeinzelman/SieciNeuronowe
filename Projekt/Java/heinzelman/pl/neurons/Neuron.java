@@ -39,7 +39,7 @@ public class Neuron {
         Double[] X = parent.getX();
         Double XW=0.0;
         for (int i=0;i<Xsize;i++) {
-            XW = XW + ( W[i]*X[i]);
+            XW = XW + ( W[i]*X[i] );
         }
     return XW;
     }
@@ -54,7 +54,6 @@ public class Neuron {
     public void updateW ( Double S_ZxFprim ){
         for (int i=0;i<Xsize;i++) {
             W[i] += parent.getWspUcz() * parent.getX()[i] * S_ZxFprim;
-            System.out.println( W[i] );
         }
     }
 

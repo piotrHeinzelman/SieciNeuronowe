@@ -15,7 +15,7 @@ public class Layer {
     private Double[] X;
     //private Double[] Y;
     private Double[] Z;
-    private Double[] S;
+    private Double[] S_Z;
     private Double[] S_ZxFprim;
     private Double[] SforPrevLayer;
 
@@ -33,7 +33,7 @@ public class Layer {
 
         this.X = new Double[ Xsize ];
         this.Z = new Double[ Zsize ];
-        this.S = new Double[ Zsize ];
+        this.S_Z = new Double[ Zsize ];
         this.S_ZxFprim = new Double[ Zsize ];
         this.SforPrevLayer = new Double[ Xsize ];
 
@@ -51,7 +51,7 @@ public class Layer {
 
         this.X = new Double[ Xsize ];
         this.Z = new Double[ Zsize ];
-        this.S = new Double[ Zsize ];
+        this.S_Z = new Double[ Zsize ];
         this.S_ZxFprim = new Double[ Zsize ];
         this.SforPrevLayer = new Double[ Xsize ];
 
@@ -73,16 +73,16 @@ public class Layer {
 
     public Double[] updateSfromNextLayer(){
         if ( nextLayer!=null ){
-            S=nextLayer.getSforPrevLayer();
+            S_Z =nextLayer.getSforPrevLayer();
         } else {
-            S=teacher.updateSfromTeacher( Z );
+            S_Z =teacher.updateSfromTeacher( Z );
         }
-        return S;
+        return S_Z;
     }
 
     public void updateS_ZxFPrim(){
         for (int j=0;j<Zsize;j++){
-            S_ZxFprim[j]=( S[j]-Z[j] ) * F.dFdz( Z[j] );
+            S_ZxFprim[j]=( S_Z[j] ) * F.dFdz( Z[j] );
         }
     }
 
@@ -100,6 +100,7 @@ public class Layer {
     public void updateWmyNeu(){
         for ( int j=0;j<Zsize;j++ ){
             myNeurons[j].updateW( S_ZxFprim[j] );
+            System.out.println( myNeurons[j] );
         }
     }
 

@@ -35,17 +35,16 @@ public class Net {
             else { layer.setX( nextX ); }
             nextX = layer.calcZ();
 
-
             print( nextX );
         }
-
+        System.out.println( " *** " );
 
         Double[] S = null;
         // backprop
         for (int i=(myLayers.size()-1);i>=0 ;i--) {
             Layer layer = myLayers.get(i);
             S = layer.updateSfromNextLayer();
-                print( S );
+                // print( S );
             layer.updateS_ZxFPrim();
             layer.updateWmyNeu();
             layer.calcOutSj();
