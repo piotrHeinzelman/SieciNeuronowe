@@ -17,7 +17,7 @@ public class Layer {
     private Double[] Z;
     private Double[] S;
     private Double[] S_ZxFprim;
-    private Double[] SprevLayer;
+    private Double[] SforPrevLayer;
 
     private Double wspUcz = 0.1;
     private Layer nextLayer = null;
@@ -32,12 +32,10 @@ public class Layer {
 
 
         this.X = new Double[ Xsize ];
-        //this.Y = new Double[ Zsize ];
         this.Z = new Double[ Zsize ];
         this.S = new Double[ Zsize ];
         this.S_ZxFprim = new Double[ Zsize ];
-        this.SprevLayer = new Double[ Zsize ];
-
+        this.SforPrevLayer = new Double[ Xsize ];
 
         this.myNeurons = new Neuron[ Zsize ];
         for ( int i=0; i<Zsize; i++ ){
@@ -55,6 +53,7 @@ public class Layer {
         this.Z = new Double[ Zsize ];
         this.S = new Double[ Zsize ];
         this.S_ZxFprim = new Double[ Zsize ];
+        this.SforPrevLayer = new Double[ Xsize ];
 
         this.myNeurons = new Neuron[ Zsize ];
         for ( int i=0; i<Zsize; i++ ){
@@ -63,36 +62,39 @@ public class Layer {
     }
 
 
-    public void calcZ(){
+    public Double[] calcZ(){
         for ( int j=0; j<Zsize; j++ ) {  // j dla Zsize i dla Xsize
             Double Yj = myNeurons[j].calcXW(); // przed fun.
             Z[j] = F.Fy( Yj );            // Zj wyjscie
         }
+        return Z;
     }
 
 
-    public void updateSfromNextLayer(){
+    public Double[] updateSfromNextLayer(){
         if ( nextLayer!=null ){
-            for (int j=0;j<Zsize;j++){
-                S[j]=nextLayer.getSprevLayer()[j];
-            }
-        } teacher.updateSfromTeacher( Z );
+            S=nextLayer.getSforPrevLayer();
+        } else {
+            S=teacher.updateSfromTeacher( Z );
+        }
+        return S;
     }
 
     public void updateS_ZxFPrim(){
         for (int j=0;j<Zsize;j++){
-            S_ZxFprim[j]=S[j] * F.dFdz( Z[j] );
+            S_ZxFprim[j]=( S[j]-Z[j] ) * F.dFdz( Z[j] );
         }
     }
 
 
-    public void calcOutSj(){
-        for (int j=0;j<Zsize;j++){
-            SprevLayer[j]=0.0;
+    public Double[] calcOutSj(){
+        for (int i=0;i<Xsize;i++){
+            SforPrevLayer[i]=0.0;
         }
         for (int j=0;j<Zsize;j++){
             myNeurons[j].calcOutSj( S_ZxFprim[j] );
         }
+        return SforPrevLayer;
     }
 
     public void updateWmyNeu(){
@@ -119,7 +121,7 @@ public class Layer {
 
 
     public Double[] getX() { return X; }
-    public Double[] getSprevLayer() { return SprevLayer; }
+    public Double[] getSforPrevLayer() { return SforPrevLayer; }
 
     public Double getWspUcz() { return wspUcz; }
 

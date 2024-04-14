@@ -25,11 +25,31 @@ public class Net {
         myLayers.get( myLayers.size()-1).setTeacher( teacher );
     }
 
-    public Double calcucateOneCycle( byte[] X ){
+    public Double calcucateOneCycle( Double[] X ){
+
+        System.out.println( "X:" );
+        Double[] nextX=null;
         for (int i=0;i< myLayers.size();i++){
             Layer layer=myLayers.get(i);
-            //layer.setX(   X[i] );
-            //System.out.println( X[i] );
+            if ( nextX==null ) { layer.setX( X ); }
+            else { layer.setX( nextX ); }
+            nextX = layer.calcZ();
+
+
+            print( nextX );
+        }
+
+
+        Double[] S = null;
+        // backprop
+        for (int i=(myLayers.size()-1);i>=0 ;i--) {
+            Layer layer = myLayers.get(i);
+            S = layer.updateSfromNextLayer();
+                print( S );
+            layer.updateS_ZxFPrim();
+            layer.updateWmyNeu();
+            layer.calcOutSj();
+
         }
         return 0.0;
     }
@@ -37,7 +57,18 @@ public class Net {
 
 
 
+    public void print(Double[] ary) {
+        String out=new String();
+        for( Double d : ary ){
+            out += ", "+d;
+        }
+        System.out.println( out );
+    }
+
+
 }
+
+
 
 
 /*

@@ -28,8 +28,10 @@ class Pro{
         FileRdr rdr = new FileRdr();
         Fun sigmod = new FunSigMod();
 
-        byte[] X = rdr.readX( 2 );
-            new Tools().printX( X );
+        if (false) { // read data
+            byte[] X = rdr.readX(2);
+            new Tools().printX(X);
+        }
 
         if ( true ) { // TURN OFF BUILD NET !
             List<Double[]>data0= new ArrayList<>();
@@ -52,7 +54,7 @@ class Pro{
             net.addNextLayer( layer1 );
             net.addTeacherForLast( new Teacher());
 
-            byte[] X_ = new byte[]{ Byte.valueOf( "1" ), Byte.valueOf( "2" )};
+            Double[] X_ = new Double[]{  1.0, 2.0 };
             net.calcucateOneCycle( X_ );
 
         }
