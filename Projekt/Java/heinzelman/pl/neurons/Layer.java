@@ -94,6 +94,7 @@ public class Layer {
         for (int j=0;j<Zsize;j++){
             myNeurons[j].calcOutSj( S_ZxFprim[j] );
         }
+        print( SforPrevLayer );
         return SforPrevLayer;
     }
 
@@ -101,6 +102,17 @@ public class Layer {
         for ( int j=0;j<Zsize;j++ ){
             myNeurons[j].updateW( S_ZxFprim[j] );
             System.out.println( myNeurons[j] );
+        }
+    }
+
+    public void Softmax_normalizeMyZ(){
+        Double sum=0.0;
+        for (int j=0;j<Zsize;j++){
+            Z[j]=Math.exp(Z[j]);
+            sum+=Z[j];
+        }
+        for (int j=0;j<Zsize;j++){
+            Z[j]=Z[j]/sum;
         }
     }
 
@@ -120,9 +132,10 @@ public class Layer {
 
 
 
-
     public Double[] getX() { return X; }
+    public Double[] getZ() { return Z; }
     public Double[] getSforPrevLayer() { return SforPrevLayer; }
+    public Fun getF() { return F; }
 
     public Double getWspUcz() { return wspUcz; }
 
@@ -147,6 +160,15 @@ public class Layer {
             for ( Neuron n  : myNeurons ){ out += n.toString()+"\n"; }
         return out;
     }
+
+    public void print(Double[] ary) {
+        String out=new String();
+        for( Double d : ary ){
+            out += ", "+d;
+        }
+        System.out.println( out );
+    }
+
 }
 
 

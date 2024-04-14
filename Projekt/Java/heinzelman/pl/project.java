@@ -27,6 +27,7 @@ class Pro{
         Random rand = new Random();
         FileRdr rdr = new FileRdr();
         Fun sigmod = new FunSigMod();
+        Fun softmax = new FunSoftmax();
 
         if (false) { // read data
             byte[] X = rdr.readX(2);
@@ -44,7 +45,7 @@ class Pro{
             data1.add( new Double[]{  1.0 , -1.0,  1.0 } );
             data1.add( new Double[]{ -1.0 ,  1.0, -1.0 } );
 
-            Layer layer1=new Layer(  3, 2,  sigmod , data1);
+            Layer layer1=new Layer(  3, 2,  softmax , data1 );
 
             //Layer layer0 = new Layer(28 * 28, 28 * 28, new FunSigMod());
             //Layer layer1 = new Layer(28 * 28, 3, new FunSigMod());
