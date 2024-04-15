@@ -5,36 +5,31 @@ public class convolution {
     public static Double[][] conv ( Double[][] data , Double[][] filter , int padding , int stride ) { // stride = step
         if ( padding>1 ){ data = makePadding( data, padding ); }
 
-        int dim = 1+data[0].length-filter.length;
-        int hSize=filter.length;
-        Double[][] out=new Double[ (dim/stride) ][ (dim/stride) ];
-        for ( int i=0;i<dim;i+=stride ){
-            for ( int j=0;j<dim;j+=stride ){
-                out[i][j]=mul( cutArray( data , i, j, hSize ) , filter );
-            }
-        }
-        return out;
-    }
+        int D = data.length;
+        int H = filter.length-1;
+        int h = (H)/2;
+        int d = D-H;
 
+        Double [][] out= new Double[ d ][ d ];
 
-    public static Double mul ( Double[][] data , Double [][] Filter ){
-        Double out=0.0;
-        int dim = Filter.length;
-        for ( int i=0;i<dim;i++){
-            for ( int j=0;j<dim;j++) {
-                out += data[i][j]*Filter[i][j];
-            }
-        }
+        //     . i=0
+        // |  : :  |         |
+        //  0     H
+        //  ..+i     ( i-h , i<D-h )    i=<0,d>  d=D-H
+        //
+        // H = FilterSize-1 !!!!
+        // h = H/2
 
-        return out;
-    }
-
-
-    public static Double[][] cutArray ( Double [][] data, int iOffset, int jOffset , int dim  ) {
-        Double[][] out = new Double[ dim ][ dim ];
-        for ( int i=(dim-1)/2;i<(dim+1)/2;i++ ){
-            for ( int j=(dim-1)/2;j<(dim);j++ ){
-                out[i][j]=data[ i + iOffset ][ j + jOffset ];
+        for (int i=0;i<d;i++){
+            for (int j=0;j<d;j++) {
+                double sum=0.0;
+                    for (int m=0;m<=H;m++){
+                        for (int n=0;n<=H;n++) {
+                            //System.out.println( "F["+m+"]["+n+"]"+ filter[m][n] + ", Data["+(m+i)+"]["+(n+j)+"]="+data[m+i][n+j]  );
+                            sum+=filter[m][n]*data[m+i][n+j];
+                        }
+                    }
+                out[j][i]= /*ReLU*/ (sum>0) ? sum : 0 ; // ReLU !!
             }
         }
         return out;

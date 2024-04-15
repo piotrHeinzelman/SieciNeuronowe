@@ -10,14 +10,21 @@ public class convolutionTest {
 
     @Test
     public void makePaddingTest(){
-        Double[][] data = new Double[][]{ { 1.0,1.0 },
-                                          { 2.0,0.0 }};
+        Double[][] data = new Double[][]{ { 1.0,0.0,2.0 },
+                                          { 3.0,1.0,2.0 },
+                                          { 1.0,1.0,0.0 }
+                                                         };
 
         Double[][] filter = new Double[][]
         {
-    { 0.0,1.0,0.0 },
-    { 0.0,1.0,0.0 },
-    { 0.0,1.0,0.0 }
+            {  1.0, 0.0 },
+            { -1.0, 1.0 }
+        };
+
+        Double[][] filter2 = new Double[][]
+        {
+            {  2.0, 0.0 },
+            {  1.0,-1.0 }
         };
 
 
@@ -25,9 +32,8 @@ public class convolutionTest {
         Double[][] pad = convolution.makePadding( data ,  3 );
         print( pad );
 
-        print( convolution.cutArray(  pad, 1,1,3  ) );
-        print ( convolution.conv ( data , filter , 3 , 1 ));
-
+        print ( convolution.conv ( data , filter , 1 , 1 ));
+        print ( convolution.conv ( data , filter2 , 1 , 1 ));
 
         Assertions.assertTrue(true);
     }
