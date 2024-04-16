@@ -31,3 +31,6 @@ https://www.youtube.com/watch?v=0idoEomDc9E
 
 szybkie mnożenie macierzy
 https://www.youtube.com/watch?v=fDAPJ7rvcUw
+
+ASM vs Python vs C++
+https://www.youtube.com/watch?v=3PcIJKd1PKU
