@@ -1,6 +1,6 @@
 package heinzelman.pl.Filter;
 
-public class convolution {
+public class Convolution {
 
     public static Double[][] conv ( Double[][] data , Double[][] filter , int padding , int stride ) { // stride = step
         if ( padding>1 ){ data = makePadding( data, padding ); }

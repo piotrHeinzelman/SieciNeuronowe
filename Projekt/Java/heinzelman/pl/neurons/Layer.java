@@ -23,27 +23,8 @@ public class Layer {
     private Layer nextLayer = null;
     private Layer prevLayer = null;
     private Teacher teacher = null;
-
-
-    public Layer( int Xsize, int Zsize, Fun F  ) {
-        this.Xsize=Xsize;
-        this.Zsize=Zsize;
-        this.F = F;
-
-
-        this.X = new Double[ Xsize ];
-        this.Z = new Double[ Zsize ];
-        this.S_Z = new Double[ Zsize ];
-        this.S_ZxFprim = new Double[ Zsize ];
-        this.SforPrevLayer = new Double[ Xsize ];
-
-        this.myNeurons = new Neuron[ Zsize ];
-        for ( int i=0; i<Zsize; i++ ){
-            myNeurons[ i ] = new Neuron( Xsize, this );
-        }
-    }
-
-    @Deprecated // for test only !
+ 
+    // WList may by null
     public Layer( int Xsize, int Zsize, Fun F , List<Double[]> WList ) {
         this.Xsize=Xsize;
         this.Zsize=Zsize;
@@ -57,7 +38,8 @@ public class Layer {
 
         this.myNeurons = new Neuron[ Zsize ];
         for ( int i=0; i<Zsize; i++ ){
-            myNeurons[ i ] = new Neuron( Xsize, this , WList.get(i) );
+            if ( WList!=null ) { myNeurons[ i ] = new Neuron( Xsize, this , WList.get(i) ); }
+            else               { myNeurons[ i ] = new Neuron( Xsize, this , null ); }
         }
     }
 

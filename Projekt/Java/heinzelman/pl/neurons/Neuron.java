@@ -13,17 +13,16 @@ public class Neuron {
     public Neuron( int Xsize , Layer parent, Double[] startW ) {
         this.parent=parent;
         this.Xsize=Xsize;
-        this.W = new Double[Xsize];
-        for ( int i=0;i<startW.length;i++ ){
-            this.W[i]=startW[i];
-        }
+        this.W=new Double[Xsize];
+        if ( startW==null ) { initRandomWags(); }
+        else {
+            this.W = new Double[Xsize];
+            for (int i = 0; i < startW.length; i++) {
+                this.W[i] = startW[i];
+            }
+        };
     }
 
-    public Neuron( int Xsize , Layer parent ) {
-        this.Xsize=Xsize;
-        W = new Double[Xsize];
-        initRandomWags();
-    }
 
     public void initRandomWags(){
         Random r = new Random();

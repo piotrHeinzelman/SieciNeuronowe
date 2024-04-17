@@ -1,8 +1,10 @@
 package heinzelman.pl;
 
-import heinzelman.pl.FilesAndData.FileRdr;
+import heinzelman.pl.F.Fun;
+import heinzelman.pl.F.FunSigMod;
+import heinzelman.pl.F.FunSoftmax;
 import heinzelman.pl.FilesAndData.Tools;
-import heinzelman.pl.F.*;
+import heinzelman.pl.Filter.Convolution;
 import heinzelman.pl.neurons.Layer;
 import heinzelman.pl.neurons.Net;
 import heinzelman.pl.neurons.Teacher;
@@ -29,14 +31,43 @@ class Pro{
         Fun sigmod = new FunSigMod();
         Fun softmax = new FunSoftmax();
 
-        if ( true ) { // read data
-            for (int i=0;i<5;i++) {
+        if ( true ) {
+            // test without Convolution, only FullConnected
+            Layer layer0 = new Layer( 784, 40 , sigmod , null ); // layer 0
+            Layer layer1 = new Layer( 40,  10 , softmax, null );
 
-                int xClass=tools.getClassAtI( i );
-                int [][] X = tools.getXatI( i );
-                System.out.println( "Class: " + xClass );
-                tools.printTab( X );
 
+            Net net = new Net();
+            net.addNextLayer( layer0 );
+            net.addNextLayer( layer1 );
+            Teacher teacher= new Teacher( net );
+                    teacher.teachOneEpoch();
+        }
+
+
+
+        if ( false ) { // read data // show data :- )
+            for (int i=0;i<1;i++) {
+
+                Double [][] X = tools.getNextX();
+                System.out.println( "Class: " + tools.getClassOfX( X ) );
+            //    tools.printTab( X );
+
+                Double[][] filter = new Double[][]{
+                        { 1.0 , 0.0 , 1.0 },
+                        { 1.0 , 0.0 , 1.0 },
+                        { 1.0 , 0.0 , 1.0 },
+                };
+
+            //    tools.printTab( filter );
+                Double[][] A = Convolution.conv( X, filter, 0, 1);
+            //    tools.printTab( A );
+                  A = Convolution.conv( A, filter, 0, 1);
+                  A = Convolution.conv( A, filter, 0, 1);
+            //    tools.printTab( A );
+
+                Double[][] B = A = Convolution.conv( filter, A, 22, 1);
+                tools.printTab( B );
             }
         }
 

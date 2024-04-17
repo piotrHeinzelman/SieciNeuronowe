@@ -19,7 +19,6 @@ public class Net {
             nextLater.setPrevLayer( last );
         }
         myLayers.add( nextLater );
-
     }
     public void addTeacherForLast( Teacher teacher ) {
         myLayers.get( myLayers.size()-1).setTeacher( teacher );

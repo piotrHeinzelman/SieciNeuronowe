@@ -26,11 +26,11 @@ public class convolutionTest {
 
 
         print( data );
-        Double[][] pad = convolution.makePadding( data ,  3 );
+        Double[][] pad = Convolution.makePadding( data ,  3 );
         print( pad );
 
-        print ( convolution.conv ( data , filter , 1 , 1 ));
-        print ( convolution.conv ( data , filter2 , 1 , 1 ));
+        print ( Convolution.conv ( data , filter , 1 , 1 ));
+        print ( Convolution.conv ( data , filter2 , 1 , 1 ));
 
         Assertions.assertTrue(true);
     }
