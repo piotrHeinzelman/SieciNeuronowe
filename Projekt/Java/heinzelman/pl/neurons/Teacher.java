@@ -39,29 +39,34 @@ public class Teacher {
             };
             net.calcucateOneCycle(XasRow);
         }
-        System.out.println( "Epoch error: " + ErrorOfEpoch );
+        System.out.println( "Epoch error: " + Math.round(ErrorOfEpoch/100) );
         ErrorOfEpoch=0.0;
         epocNum++;
     }
 
 
     public Double[] updateSfromTeacher( Double[] Z ){
+        //System.out.println( Z[0]  );
+
         int j = (int) Math.round(ZZ);
-        Double[] out = new Double[10];
+        Double[] S = new Double[10];
 
         for ( int i=0;i<10;i++ ){
-            out[i]=0.0-Z[j];
+            if (i==j) { S[i]= 0.0 ; } //+Z[i];
+            else      { S[i]= 1.0 ; }
         }
-
-        out[j]=1.0-Z[j];
 
                 // calcutate error :
                 for (int n=0;n<10;n++){
-                    Double e = out[n]-Z[n];
+                    Double e = S[n]-Z[n];
                     ErrorOfEpoch+=(e*e);
                 }
 
-        return out;
+    //for ( int i=0;i<10;i++ ){
+    //    S[i]=S[i]-Z[i];
+    //}
+        S[j]=S[j]-Z[j];
+        return S;
     }
 
 }

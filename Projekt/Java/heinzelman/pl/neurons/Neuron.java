@@ -52,6 +52,7 @@ public class Neuron {
 
     public void updateW ( Double S_ZxFprim ){
         for (int i=0;i<Xsize;i++) {
+            //if ( parent.getX()[i] * S_ZxFprim !=0 ) { System.out.println(parent.getX()[i] * S_ZxFprim);}
             W[i] += parent.getWspUcz() * parent.getX()[i] * S_ZxFprim;
         }
     }

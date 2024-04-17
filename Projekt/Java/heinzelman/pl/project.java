@@ -41,19 +41,7 @@ class Pro{
             net.addNextLayer( layer1 );
             Teacher teacher = new Teacher( net );
 
-            for (int i=0;i<30;i++) {
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
-                teacher.teachOneEpoch();
+            for (int i=0;i<1000;i++) {
                 teacher.teachOneEpoch();
             }
 
