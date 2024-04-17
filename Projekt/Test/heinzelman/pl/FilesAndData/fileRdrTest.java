@@ -10,7 +10,7 @@ class fileRdrTest {
 
     @Test
     void readData() {
-        Tools tools=new Tools();
+        Tools tools=new Tools( true );
         tools.printX( 0 );
 
     }
