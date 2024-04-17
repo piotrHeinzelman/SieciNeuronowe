@@ -26,9 +26,8 @@ class Pro{
     }
 
     public void run(){
-        Random rand = new Random();
-            Tools tools = new Tools();
-        Fun sigmod = new FunSigMod();
+        Tools tools = new Tools();
+         Fun sigmod = new FunSigMod();
         Fun softmax = new FunSoftmax();
 
         if ( true ) {
@@ -40,8 +39,24 @@ class Pro{
             Net net = new Net();
             net.addNextLayer( layer0 );
             net.addNextLayer( layer1 );
-            Teacher teacher= new Teacher( net );
-                    teacher.teachOneEpoch();
+            Teacher teacher = new Teacher( net );
+
+            for (int i=0;i<30;i++) {
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+                teacher.teachOneEpoch();
+            }
+
         }
 
 

@@ -7,6 +7,8 @@ public class Teacher {
     private Net net;
     private Tools tools;
     private Double ZZ = 0.0;
+    private Double ErrorOfEpoch=0.0;
+    private int epocNum = 0;
 
     public Teacher() {}
 
@@ -17,9 +19,14 @@ public class Teacher {
     }
 
     public void teachOneEpoch(){
-        Double[][] X=null;
-        Double ErrorOfEpoch=0.0;
+        System.out.println( " Epoka:"+epocNum );
+
+
+        Double[][] X = null;
         Double[] XasRow = new Double[784];
+
+        ErrorOfEpoch=0.0;
+        tools.refreshDataSet();
 
         while ( true ) {
             X = tools.getNextX(); //System.out.println(X[0][0]);
@@ -27,22 +34,34 @@ public class Teacher {
             ZZ = X[0][0];
             for ( int i=0;i<28;i++ ) {
                 for (int j=0;j<28;j++) {
-                XasRow[28*i+j] = X[i][j];
+                    XasRow[28*i+j] = X[i][j];
                 }
             };
-           net.calcucateOneCycle( XasRow );
+            net.calcucateOneCycle(XasRow);
         }
-        //{
-       //     System.out.println( X[0][0] );
-        //}
-        //Double[] X_ = new Double[]{  1.0, 2.0 };
-        //net.calcucateOneCycle( X_ );
-
+        System.out.println( "Epoch error: " + ErrorOfEpoch );
+        ErrorOfEpoch=0.0;
+        epocNum++;
     }
 
 
     public Double[] updateSfromTeacher( Double[] Z ){
-        return new Double[]{ 1.0-Z[0], 0.0-Z[1] };
+        int j = (int) Math.round(ZZ);
+        Double[] out = new Double[10];
+
+        for ( int i=0;i<10;i++ ){
+            out[i]=0.0-Z[j];
+        }
+
+        out[j]=1.0-Z[j];
+
+                // calcutate error :
+                for (int n=0;n<10;n++){
+                    Double e = out[n]-Z[n];
+                    ErrorOfEpoch+=(e*e);
+                }
+
+        return out;
     }
 
 }

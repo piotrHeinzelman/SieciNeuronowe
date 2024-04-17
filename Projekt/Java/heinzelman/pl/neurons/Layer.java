@@ -23,7 +23,7 @@ public class Layer {
     private Layer nextLayer = null;
     private Layer prevLayer = null;
     private Teacher teacher = null;
- 
+
     // WList may by null
     public Layer( int Xsize, int Zsize, Fun F , List<Double[]> WList ) {
         this.Xsize=Xsize;
@@ -76,14 +76,14 @@ public class Layer {
         for (int j=0;j<Zsize;j++){
             myNeurons[j].calcOutSj( S_ZxFprim[j] );
         }
-        print( SforPrevLayer );
+        //print( SforPrevLayer );
         return SforPrevLayer;
     }
 
     public void updateWmyNeu(){
         for ( int j=0;j<Zsize;j++ ){
             myNeurons[j].updateW( S_ZxFprim[j] );
-            System.out.println( myNeurons[j] );
+            //System.out.println( myNeurons[j] );
         }
     }
 

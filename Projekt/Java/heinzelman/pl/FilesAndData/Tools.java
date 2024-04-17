@@ -7,15 +7,22 @@ import java.util.Random;
 
 public class Tools {
     private Random rnd = new Random();
-    private int[] myData;
+    private final int[] myData;
+    private int myDataLen;
     private final char[] table={'.',',','-','~',':',';','=','!','*','#','$','@'};
     private List<Integer> notUsedX = null;
 
     public Tools() {
         FileRdr FR = new FileRdr();
         this.myData = FR.readInts_addClassin00();
-        this.notUsedX = new ArrayList<>(this.myData.length/784);
-        for (int i=0;i<this.myData.length/784;i++){
+        this.myDataLen= myData.length/784;
+        refreshDataSet();
+    }
+
+    public void refreshDataSet(){
+
+        this.notUsedX = new ArrayList<>( myDataLen );
+        for (int i=0;i<myDataLen;i++){
             notUsedX.add(i);
         }
     }

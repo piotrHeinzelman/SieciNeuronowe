@@ -35,7 +35,7 @@ public class FileRdr {
             for ( int i=0;i<fileRowNum;i++) {
                 ints[i*784]=Byte.toUnsignedInt( labels[i] );
             }
-        } catch (Throwable t) { System.out.println( t ); }
+        } catch ( Throwable t ) { System.out.println( t ); }
         return ints;
     }
 
