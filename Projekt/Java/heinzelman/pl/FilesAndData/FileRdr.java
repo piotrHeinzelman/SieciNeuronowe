@@ -12,8 +12,10 @@ public class FileRdr {
     public int[] readInts_addClassin00()  {
 
         int[] ints=null;
-        String trainFS = "D:\\SieciNeuronowe\\Projekt\\Data\\train-images-idx3-ubyte";
-        String labelFS = "D:\\SieciNeuronowe\\Projekt\\Data\\train-labels-idx1-ubyte";
+        String path="F:\\MSI\\Projekt\\Data\\";
+        //String path="D:\\SieciNeuronowe\\Projekt\\Data\\";
+        String trainFS = path+"train-images-idx3-ubyte";
+        String labelFS = path+"train-labels-idx1-ubyte";
 
         File trainF = new File( trainFS );
         try{

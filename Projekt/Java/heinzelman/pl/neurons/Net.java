@@ -52,13 +52,5 @@ public class Net {
 
 
 
-    public void print(Double[] ary) {
-        String out=new String();
-        for( Double d : ary ){
-            out += ", "+d;
-        }
-        System.out.println( out );
-    }
-
 
 }

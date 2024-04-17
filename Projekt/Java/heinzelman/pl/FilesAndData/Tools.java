@@ -1,6 +1,7 @@
 package heinzelman.pl.FilesAndData;
 
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -82,6 +83,22 @@ public class Tools {
         }
         System.out.println( out.toString() );
         //return out.toString();
+    }
+
+
+    public static void printTabStatic( Double[][] X ){
+        for (int i=0;i< X.length;i++){
+            printRowStatic( X[i] );
+        }
+    }
+    public static void printRowStatic( Double[] numbers ){
+        DecimalFormat formatter = new DecimalFormat("###0.000");
+        StringBuffer out = new StringBuffer();
+
+        for ( int i=0;i<numbers.length;i++ ){
+            out.append( ", " + formatter.format(numbers[i])  );
+        }
+        System.out.println( out.toString() );
     }
 
 }

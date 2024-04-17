@@ -21,7 +21,6 @@ public class Teacher {
     public void teachOneEpoch(){
         System.out.println( " Epoka:"+epocNum );
 
-
         Double[][] X = null;
         Double[] XasRow = new Double[784];
 
@@ -39,34 +38,44 @@ public class Teacher {
             };
             net.calcucateOneCycle(XasRow);
         }
-        System.out.println( "Epoch error: " + Math.round(ErrorOfEpoch/100) );
+        System.out.println( "Epoch error: " + Math.round(ErrorOfEpoch) );
+        System.out.println(  );
         ErrorOfEpoch=0.0;
         epocNum++;
     }
 
 
     public Double[] updateSfromTeacher( Double[] Z ){
-        //System.out.println( Z[0]  );
+        int C = (int) Math.round(ZZ);
 
-        int j = (int) Math.round(ZZ);
+        // calcutate error :
+        Double [] Znorm = Softmax_normalizeMyZ ( Z );
+        Double e = 1.0-Znorm[C];
+        ErrorOfEpoch+=(e*e);
+
         Double[] S = new Double[10];
-
         for ( int i=0;i<10;i++ ){
-            if (i==j) { S[i]= 0.0 ; } //+Z[i];
-            else      { S[i]= 1.0 ; }
+            if ( i!=C ) { S[i]=-0.0001;/*(-1.0+Znorm[i]); */ continue; }
+             S[C]=1.0-Znorm[C];
         }
-
-                // calcutate error :
-                for (int n=0;n<10;n++){
-                    Double e = S[n]-Z[n];
-                    ErrorOfEpoch+=(e*e);
-                }
-
-    //for ( int i=0;i<10;i++ ){
-    //    S[i]=S[i]-Z[i];
-    //}
-        S[j]=S[j]-Z[j];
+        //Tools.printRowStatic( S );
         return S;
     }
+
+
+
+    public Double[] Softmax_normalizeMyZ( Double[] Z ){
+        Double[] out=new Double[Z.length];
+        Double sum=0.0;
+        for (int j=0;j<out.length;j++){
+            out[j]=Math.exp(Z[j]);
+            sum+=out[j];
+        }
+        for (int j=0;j<out.length;j++){
+            out[j]=out[j]/sum;
+        }
+        return out;
+    }
+
 
 }
