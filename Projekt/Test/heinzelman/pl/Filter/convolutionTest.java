@@ -1,10 +1,7 @@
 package heinzelman.pl.Filter;
 
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import static heinzelman.pl.Filter.convolution.conv;
-import static org.junit.jupiter.api.Assertions.*;
+import org.testng.annotations.Test;
 
 public class convolutionTest {
 

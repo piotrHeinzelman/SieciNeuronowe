@@ -11,6 +11,9 @@ public class FileRdr {
     int offset=0;
 
 
+
+
+
     public FileRdr() {
         byte[] labelaData;
         String  trainFS="D:\\SieciNeuronowe\\Projekt\\Data\\train-images-idx3-ubyte";

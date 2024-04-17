@@ -1,6 +1,6 @@
 package heinzelman.pl.FilesAndData;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 
 public class eTest {
 

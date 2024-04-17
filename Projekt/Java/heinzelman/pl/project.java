@@ -30,7 +30,7 @@ class Pro{
         Fun softmax = new FunSoftmax();
 
         if ( true ) { // read data
-            byte[] X = rdr.readX(2);
+            byte[] X = rdr.readX(0);
             new Tools().printX(X);
         }
 
