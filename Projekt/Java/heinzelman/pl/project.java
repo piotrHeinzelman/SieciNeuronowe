@@ -26,13 +26,13 @@ class Pro{
     }
 
     public void run(){
-        Tools tools = new Tools();
+        Tools tools = new Tools( true ); // train
          Fun sigmod = new FunSigMod();
         Fun softmax = new FunSoftmax();
 
         if ( true ) {
             // test without Convolution, only FullConnected
-            Layer layer0 = new Layer( 784, 40 , sigmod , null ); // layer 0
+            Layer layer0 = new Layer( 784, 40 , sigmod, null ); // layer 0
             Layer layer1 = new Layer( 40,  10 , softmax, null );
 
 
@@ -41,9 +41,20 @@ class Pro{
             net.addNextLayer( layer1 );
             Teacher teacher = new Teacher( net );
 
-            for (int i=0;i<1000;i++) {
+            for (int i=0;i<100;i++) {
                 teacher.teachOneEpoch();
             }
+                teacher.test();
+
+            for (int i=0;i<200;i++) {
+                teacher.teachOneEpoch();
+            }
+                teacher.test();
+
+            for (int i=0;i<700;i++) {
+                teacher.teachOneEpoch();
+            }
+                teacher.test();
 
         }
 

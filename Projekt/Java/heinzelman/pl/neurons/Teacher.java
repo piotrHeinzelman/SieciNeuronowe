@@ -9,17 +9,18 @@ public class Teacher {
     private Double ZZ = 0.0;
     private Double ErrorOfEpoch=0.0;
     private int epocNum = 0;
+    private Double startE=null;
 
     public Teacher() {}
 
     public Teacher( Net net ) {
         this.net = net;
         net.addTeacherForLast( this );
-        this.tools = new Tools();
+        this.tools = new Tools( true ); // train data
     }
 
     public void teachOneEpoch(){
-        System.out.println( " Epoka:"+epocNum );
+        //System.out.println( " Epoka:"+epocNum );
 
         Double[][] X = null;
         Double[] XasRow = new Double[784];
@@ -38,27 +39,37 @@ public class Teacher {
             };
             net.calcucateOneCycle(XasRow);
         }
-        System.out.println( "Epoch error: " + Math.round(ErrorOfEpoch) );
-        System.out.println(  );
+        if (startE==null ) { startE=ErrorOfEpoch; }
+        //System.out.println( startE + "Epoch error: " + 100*100*((startE-ErrorOfEpoch)/startE) );
+
         ErrorOfEpoch=0.0;
         epocNum++;
     }
 
 
     public Double[] updateSfromTeacher( Double[] Z ){
+
+        Double [] Zn = Softmax_normalizeMyZ(Z);
         int C = (int) Math.round(ZZ);
 
-        // calcutate error :
-        Double [] Znorm = Softmax_normalizeMyZ ( Z );
-        Double e = 1.0-Znorm[C];
-        ErrorOfEpoch+=(e*e);
+
 
         Double[] S = new Double[10];
         for ( int i=0;i<10;i++ ){
-            if ( i!=C ) { S[i]=-0.0001;/*(-1.0+Znorm[i]); */ continue; }
-             S[C]=1.0-Znorm[C];
+            if ( i!=C ) { S[i]= ( 0.0-Zn[i] )  ;  continue; }
+             S[i]=1.0-Zn[C];
         }
+
+        // calcutate error :
+
+        for (int i=0;i<10;i++) {
+            Double e = S[i]-Z[i];
+            ErrorOfEpoch += (e * e);
+        }
+        //System.out.println(C);
+        //Tools.printRowStatic( Z );
         //Tools.printRowStatic( S );
+
         return S;
     }
 
@@ -75,6 +86,31 @@ public class Teacher {
             out[j]=out[j]/sum;
         }
         return out;
+    }
+
+    public void test(){
+        Tools test = new Tools( false ); // test
+        int n=0;
+        Double[] XasRow = new Double[784];
+        Double accuracy=0.0;
+        while (true){
+            n++;
+            Double[][] nextX = test.getNextX();
+            if (nextX==null) break;
+            int classOfX = test.getClassOfX( nextX );
+                for ( int i=0;i<28;i++ ) {
+                    for (int j=0;j<28;j++) {
+                        XasRow[28*i+j] = nextX[i][j];
+                    }
+                };
+            Double[] Result = Softmax_normalizeMyZ ( net.calcucateOneCycle(XasRow));
+            Double val=Result[0]; int ind=0;
+            for (int k=0;k<10;k++){
+                if (Result[k]>val){ ind=k; val=Result[k]; }
+            }
+            if ( classOfX == ind ) { accuracy++; };
+        }
+        System.out.println( "Trafość: " + (accuracy*100)/n + "%" );
     }
 
 

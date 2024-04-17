@@ -19,7 +19,7 @@ public class Layer {
     private Double[] S_ZxFprim;
     private Double[] SforPrevLayer;
 
-    private Double wspUcz = 0.02;
+    private Double wspUcz = 0.1;
     private Layer nextLayer = null;
     private Layer prevLayer = null;
     private Teacher teacher = null;

@@ -1,6 +1,5 @@
 package heinzelman.pl.FilesAndData;
 
-import java.sql.Time;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +12,9 @@ public class Tools {
     private final char[] table={'.',',','-','~',':',';','=','!','*','#','$','@'};
     private List<Integer> notUsedX = null;
 
-    public Tools() {
+    public Tools( Boolean isTrain ) {
         FileRdr FR = new FileRdr();
-        this.myData = FR.readInts_addClassin00();
+        this.myData = FR.readInts_addClassin00( isTrain );
         this.myDataLen= myData.length/784;
         refreshDataSet();
     }

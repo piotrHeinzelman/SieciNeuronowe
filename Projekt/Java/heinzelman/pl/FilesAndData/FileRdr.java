@@ -5,17 +5,26 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class FileRdr {
-    int fileRowNum=590; //59900;
+    int fileRowNum=3000; //59900;
     int Toffset=16;
     int Loffset=8;
 
-    public int[] readInts_addClassin00()  {
+    public int[] readInts_addClassin00( Boolean isTrain )  {
 
         int[] ints=null;
+        String trainFS=null;
+        String labelFS=null;
+
+
         String path="F:\\MSI\\Projekt\\Data\\";
         //String path="D:\\SieciNeuronowe\\Projekt\\Data\\";
-        String trainFS = path+"train-images-idx3-ubyte";
-        String labelFS = path+"train-labels-idx1-ubyte";
+        if ( isTrain ) {
+            trainFS = path + "train-images-idx3-ubyte";
+            labelFS = path + "train-labels-idx1-ubyte";
+        } else {
+            trainFS = path + "t10k-images-idx3-ubyte";
+            labelFS = path + "t10k-labels-idx1-ubyte";
+        }
 
         File trainF = new File( trainFS );
         try{

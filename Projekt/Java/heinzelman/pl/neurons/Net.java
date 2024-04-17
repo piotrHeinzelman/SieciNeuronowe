@@ -24,7 +24,7 @@ public class Net {
         myLayers.get( myLayers.size()-1).setTeacher( teacher );
     }
 
-    public Double calcucateOneCycle( Double[] X ){
+    public Double[] calcucateOneCycle( Double[] X ){
 
         Double[] nextX=X;
         for (int i=0;i< myLayers.size();i++){
@@ -34,7 +34,7 @@ public class Net {
             nextX = layer.calcZ();
         }
         // if softmax
-        if ( true ) { myLayers.get(myLayers.size()-1).Softmax_normalizeMyZ(); }
+        //if ( true ) { myLayers.get(myLayers.size()-1).Softmax_normalizeMyZ(); }
 
 
         Double[] S = null;
@@ -46,7 +46,7 @@ public class Net {
             layer.updateWmyNeu();
             layer.calcOutSj();
         }
-        return 0.0;
+        return myLayers.get( myLayers.size()-1).getZ();
     }
 
 
