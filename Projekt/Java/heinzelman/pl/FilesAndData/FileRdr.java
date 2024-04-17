@@ -5,37 +5,38 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class FileRdr {
-    int fileRowNum=60;//60000;
-
+    int fileRowNum=59; //59900;
     int Toffset=16;
-    int Loffset=1;
+    int Loffset=8;
 
     public int[] readInts_addClassin00()  {
 
         int[] ints=null;
         String trainFS = "D:\\SieciNeuronowe\\Projekt\\Data\\train-images-idx3-ubyte";
-        String labelFS = "D:\\SieciNeuronowe\\Projekt\\Data\\t10k-labels-idx1-ubyte";
+        String labelFS = "D:\\SieciNeuronowe\\Projekt\\Data\\train-labels-idx1-ubyte";
 
         File trainF = new File( trainFS );
         try{
             // data
             InputStream TF = new FileInputStream( trainFS );
-            byte[] bytes = TF.readNBytes( ( fileRowNum*784)+Toffset );//.readAllBytes();
+            TF.skip(Toffset);
+            byte[] bytes = TF.readNBytes( fileRowNum*784 );//.readAllBytes();
 
 
-            ints = new int[bytes.length-Toffset];
-            for ( int i=0;i<bytes.length-Toffset;i++) {
-                ints[i]=Byte.toUnsignedInt( bytes[i+Toffset] );
+            ints = new int[bytes.length];
+            for ( int i=0;i<bytes.length;i++) {
+                ints[i]=Byte.toUnsignedInt( bytes[i] );
             }
 
             // label
             InputStream LF = new FileInputStream( labelFS );
-            byte[] labels = TF.readNBytes( fileRowNum );
-            int len=ints.length/784;
-            for ( int i=0;i<len;i++) {
-            //    ints[i*784]=Byte.toUnsignedInt( labels[i+Loffset] );
+            LF.skip( Loffset );
+            byte[] labels = LF.readNBytes( fileRowNum);
+            for ( int i=0;i<fileRowNum;i++) {
+                ints[i*784]=Byte.toUnsignedInt( labels[i] );
             }
         } catch (Throwable t) { System.out.println( t ); }
+
         return ints;
     }
 

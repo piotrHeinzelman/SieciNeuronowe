@@ -25,17 +25,18 @@ class Pro{
 
     public void run(){
         Random rand = new Random();
-            FileRdr rdr = new FileRdr();
             Tools tools = new Tools();
         Fun sigmod = new FunSigMod();
         Fun softmax = new FunSoftmax();
 
         if ( true ) { // read data
             for (int i=0;i<5;i++) {
-                System.out.println(  );
-                System.out.println( " ** próbka " + i + "  **" );
-                System.out.println(  );
-//      tools.printX(i);
+
+                int xClass=tools.getClassAtI( i );
+                int [][] X = tools.getXatI( i );
+                System.out.println( "Class: " + xClass );
+                tools.printTab( X );
+
             }
         }
 
