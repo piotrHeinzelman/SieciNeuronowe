@@ -11,18 +11,18 @@ public class Neuron {
 
     @Deprecated // for Tet ONLY !
     public Neuron( int Xsize , Layer parent, Double[] startW ) {
+        this.parent=parent;
         this.Xsize=Xsize;
-        this.W = new Double[Xsize];
-        for ( int i=0;i<startW.length;i++ ){
-            W[i]=startW[i];
-        }
+        this.W=new Double[Xsize];
+        if ( startW==null ) { initRandomWags(); }
+        else {
+            this.W = new Double[Xsize];
+            for (int i = 0; i < startW.length; i++) {
+                this.W[i] = startW[i];
+            }
+        };
     }
 
-    public Neuron( int Xsize , Layer parent ) {
-        this.Xsize=Xsize;
-        this.W = new Double[Xsize];
-        initRandomWags();
-    }
 
     public void initRandomWags(){
         Random r = new Random();
@@ -38,7 +38,7 @@ public class Neuron {
         Double[] X = parent.getX();
         Double XW=0.0;
         for (int i=0;i<Xsize;i++) {
-            XW = XW + ( W[i]*X[i]);
+            XW = XW + ( W[i]*X[i] );
         }
     return XW;
     }
@@ -46,23 +46,16 @@ public class Neuron {
     public void calcOutSj( Double S_ZxFprim ){
         Double EW=0.0;
         for (int i=0;i<Xsize;i++) {
-            parent.getX()[i] += W[i]*S_ZxFprim;
+            parent.getSforPrevLayer()[i] += W[i]*S_ZxFprim;
         }
     }
 
-
-
-
-//    public Double[] getW() { return W; }
-//    public Double getWi(int i){ return W[i]; }
     public void updateW ( Double S_ZxFprim ){
         for (int i=0;i<Xsize;i++) {
+            //if ( parent.getX()[i] * S_ZxFprim !=0 ) { System.out.println(parent.getX()[i] * S_ZxFprim);}
             W[i] += parent.getWspUcz() * parent.getX()[i] * S_ZxFprim;
         }
     }
-
-
-
 
 
     @Override
