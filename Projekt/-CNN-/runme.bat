@@ -1,0 +1,1 @@
+C:\opt\jdk-19\bin\java -jar CNN.jar

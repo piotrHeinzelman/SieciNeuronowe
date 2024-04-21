@@ -1,0 +1,30 @@
+5 x 1000 images in ep.
+filters: 4, average accuracy:- 0.8156%
+filters: 4, average accuracy:- 0.8796%
+filters: 4, average accuracy:- 0.8884%
+filters: 4, average accuracy:- 0.905%
+filters: 4, average accuracy:- 0.8988%
+
+filters: 5, average accuracy:- 0.8222%
+filters: 5, average accuracy:- 0.8774%
+filters: 5, average accuracy:- 0.9036%
+filters: 5, average accuracy:- 0.8968%
+filters: 5, average accuracy:- 0.9162%	
+
+filters: 6, average accuracy:- 0.8066%
+filters: 6, average accuracy:- 0.8852%
+filters: 6, average accuracy:- 0.8924%
+filters: 6, average accuracy:- 0.9016%
+filters: 6, average accuracy:- 0.9154%
+
+filters: 7, average accuracy:- 0.8304%
+filters: 7, average accuracy:- 0.8928%
+filters: 7, average accuracy:- 0.9076%
+filters: 7, average accuracy:- 0.9046%
+filters: 7, average accuracy:- 0.9162%
+
+filters: 8, average accuracy:- 0.8126%
+filters: 8, average accuracy:- 0.891%
+filters: 8, average accuracy:- 0.896%
+filters: 8, average accuracy:- 0.9016%
+filters: 8, average accuracy:- 0.9098%
